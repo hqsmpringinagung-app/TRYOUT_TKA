@@ -1,0 +1,2633 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+ <base target="_top">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+ <meta name="theme-color" content="#0c1232">
+ <meta name="google" content="notranslate">
+ <meta name="apple-mobile-web-app-capable" content="yes">
+ <meta name="mobile-web-app-capable" content="yes">
+ <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+ <meta name="apple-mobile-web-app-title" content="Ujian SDN RBU 19">
+
+ <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/d/1qW1-8f5787m7ZyB70Nyx0fGkIEqrb1G5=w500-h500-p-k-no-nu">
+ <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1qW1-8f5787m7ZyB70Nyx0fGkIEqrb1G5=w500-h500-p-k-no-nu">
+
+ <link rel="manifest" href='data:application/manifest+json,{"name":"Ujian SDN RAWA BADAK UTARA 19","short_name":"SDN RBU 19","description":"Aplikasi Ujian SMPN SATAP AROBA","start_url":".","display":"standalone","background_color":"#0c1232","theme_color":"#0c1232","icons":[{"src":"https://lh3.googleusercontent.com/d/1qW1-8f5787m7ZyB70Nyx0fGkIEqrb1G5=w192-h192-p-k-no-nu","sizes":"192x192","type":"image/png","purpose":"any maskable"},{"src":"https://lh3.googleusercontent.com/d/1qW1-8f5787m7ZyB70Nyx0fGkIEqrb1G5=w512-h512-p-k-no-nu","sizes":"512x512","type":"image/png","purpose":"any maskable"}]}'>
+
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Poppins:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&family=Montserrat:wght@300;700;900&display=swap" rel="stylesheet">
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+ <style>
+ :root{--bg:#0c1232;--bg-card:rgba(12,22,60,0.92);--bg-input:rgba(255,255,255,0.07);--border:rgba(255,215,0,0.2);--border-focus:rgba(255,215,0,0.6);--primary:#0a1640;--primary-light:#132d6b;--accent:#ffd700;--accent-dim:rgba(255,215,0,0.1);--accent-glow:rgba(255,215,0,0.4);--cyan:#00d4ff;--success:#2ecc71;--success-dim:rgba(46,204,113,0.12);--danger:#e74c3c;--danger-dim:rgba(231,76,60,0.12);--text:#f0f0f0;--text-sec:rgba(240,240,240,0.7);--text-muted:rgba(240,240,240,0.4);--radius:16px;--radius-xl:28px;--shadow-lg:0 20px 60px rgba(0,0,0,0.4);--glass-blur:blur(24px)}
+ *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+ 
+ body,html{
+  font-family:'Inter',-apple-system,sans-serif;
+  height:100%;
+  background: linear-gradient(-45deg, #FFD700, #FF1493, #1E3A8A, #00d4ff, #FFD700);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  color:var(--text);
+  user-select:none;
+  -webkit-user-select:none;
+  overflow-x:hidden
+ }
+ @keyframes gradientShift{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+ }
+ 
+ body.splash-active{overflow:hidden!important}
+ .bright-bg{background:transparent!important;min-height:100vh}
+
+ @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+ @keyframes shimmer{0%{left:-100%}100%{left:200%}}
+ @keyframes spin{100%{transform:rotate(360deg)}}
+ @keyframes pulseText{0%,100%{opacity:0.4}50%{opacity:1}}
+ @keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+ @keyframes celebratePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+ @keyframes gradientBorder{0%{background-position:0% 50%}100%{background-position:300% 50%}}
+
+ #main-header{position:relative;display:flex;align-items:center;height:62px;padding:0 16px;background:rgba(10,20,55,0.95);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border-bottom:1px solid var(--border);overflow:hidden;z-index:100}
+ #main-header::after{content:"";position:absolute;bottom:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0.5}
+ #star-box{position:absolute;inset:0;pointer-events:none;z-index:1}
+ .star-particle{position:absolute;background:white;border-radius:50%;pointer-events:none}
+ @keyframes twinkle{0%,100%{opacity:0.2;transform:scale(0.8)}50%{opacity:0.9;transform:scale(1.2)}}
+
+ .header-logo-wrap{
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  border:3px solid rgba(255,215,0,0.4);
+  box-shadow:0 0 20px rgba(255,215,0,0.3);
+  background:rgba(10,20,55,0.9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-right:8px;
+  position:relative;
+  top:2px;
+  animation:rotateKananKiri 4s ease-in-out infinite;
+  flex-shrink:0;
+}
+
+.header-logo{
+  height:110px!important;
+  width:110px!important;
+  max-height:50px!important;
+  object-fit:contain!important;
+  margin:0!important;
+  display:block;
+  border:none!important;
+  padding:0!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  border-radius:0!important;
+  position:static!important;
+  top:2!important;
+  animation:none!important;
+}
+ @keyframes rotateKananKiri{0%{transform:rotate(0deg)}25%{transform:rotate(15deg)}50%{transform:rotate(0deg)}75%{transform:rotate(-15deg)}100%{transform:rotate(0deg)}}
+
+ .page{display:none;padding:20px 16px;position:relative;z-index:10;animation:fadeIn 0.6s cubic-bezier(0.16,1,0.3,1);min-height:calc(100vh - 62px)}
+ .active{display:block}
+ #login-page{align-items:center;justify-content:center;min-height:calc(100vh - 62px);padding:20px;position:relative;overflow:hidden}
+ 
+ .login-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  max-width:460px;
+  width:100%;
+  margin:0 auto;
+  background:var(--bg-card);
+  border:2px solid rgba(255,215,0,0.3);
+  border-radius:30px;
+  backdrop-filter:var(--glass-blur);
+  -webkit-backdrop-filter:var(--glass-blur);
+  box-shadow:0 0 60px rgba(255,215,0,0.2),0 20px 80px rgba(0,0,0,0.4);
+  overflow:hidden;
+  padding:50px 40px 40px;
+  animation:cardReveal 1s cubic-bezier(0.16,1,0.3,1) forwards;
+  opacity:0;
+  transform:translateY(30px) scale(0.97);
+  z-index:1;
+ }
+ .login-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:5px;
+  background:linear-gradient(90deg,#FFD700,#FF1493,#1E3A8A,#FFD700);
+  background-size:300% 100%;
+  animation:gradientBorder 5s linear infinite;
+ }
+ .login-card::after{
+  content:"";
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background:radial-gradient(circle,rgba(255,215,0,0.05) 0%,transparent 70%);
+  pointer-events:none;
+ }
+ @keyframes cardReveal{to{opacity:1;transform:translateY(0) scale(1)}}
+ 
+ .login-header{text-align:center;width:100%;margin-bottom:25px;position:relative;z-index:2}
+ 
+  /* ====== ATURAN 1: LINGKARAN (BINGKAI EMAS) ======
+    Ubah width & height di sini untuk besar/kecilnya LINGKARAN */
+ .logo-luxury{
+  width:140px;               /* <-- UKURAN LINGKARAN */
+  height:140px;              /* <-- harus sama supaya bulat */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 20px;
+  border-radius:50%;
+  border:3px solid rgba(255,215,0,0.4);
+  box-shadow:0 0 40px rgba(255,215,0,0.3);
+  animation:luxuryPulse 3s ease-in-out infinite;
+  background:rgba(10,22,64,0.9);
+ }
+
+ /* ====== ATURAN 2: LOGO (ISI DI DALAMNYA) ======
+    Ubah width di sini untuk besar/kecilnya LOGO (tinggi otomatis proporsional) */
+ .logo-dalam{
+  width:170px;               /* <-- UKURAN LOGO (bebas, tidak ikut lingkaran) */
+  height:auto;
+  object-fit:contain;
+  display:block;
+ }
+ @keyframes luxuryPulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 15px rgba(255,215,0,0.4))}50%{transform:scale(1.05);filter:drop-shadow(0 0 25px rgba(255,215,0,0.7))}}
+ 
+         .judul-gradien {
+        margin: 0 0 10px;
+        font-family: Arial, Helvetica, sans-serif !important; 
+        font-style: normal !important; 
+        font-size: 1.4rem; /* <--- UBAH MENJADI 1.4rem ATAU 1.3rem AGAR KECIL */
+        font-weight: 700;
+        text-align: center;
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+        -webkit-text-fill-color: initial !important;
+        color: #ffffff;
+        animation: putihKeEmas 6s ease-in-out infinite;
+        line-height: 1.3;
+        position: relative;
+    }
+
+    .judul-gradien::after {
+        display: none !important; /* Hapus efek kilauan (shimmer) lama */
+    }
+
+    /* ANIMASI TRANSISI WARNA PUTIH KE EMAS */
+    @keyframes putihKeEmas {
+        0%, 100% { 
+            color: #ffffff; /* Mulai dan akhiri dengan putih */
+            text-shadow: 0 2px 15px rgba(255, 255, 255, 0.4); /* Glow putih */
+        }
+        50% { 
+            color: #FFD700; /* Pertengahan berubah jadi emas */
+            text-shadow: 0 2px 15px rgba(255, 215, 0, 0.6); /* Glow emas */
+        }
+    } 
+ #status-badge{
+  display:inline-block;
+  padding:6px 20px;
+  border-radius:50px;
+  font-size:0.65rem;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  background:rgba(255,215,0,0.1)!important;
+  border:1px solid rgba(255,215,0,0.3);
+  color:var(--accent)!important;
+  backdrop-filter:blur(8px);
+  transition:all 0.5s ease;
+  box-shadow:0 0 15px rgba(255,215,0,0.1);
+ }
+ 
+ .login-divider{
+  width:100%;
+  display:flex;
+  align-items:center;
+  margin:20px 0 25px;
+  gap:12px;
+  position:relative;
+  z-index:2;
+ }
+ .login-divider::before,.login-divider::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,215,0,0.3),transparent);
+ }
+ .login-divider i{
+  color:var(--accent);
+  font-size:0.5rem;
+  text-shadow:0 0 10px var(--accent-glow);
+ }
+ 
+ .login-form{width:100%;position:relative;z-index:2}
+ .form-subtitle{
+  text-align:center;
+  font-size:0.75rem;
+  color:var(--text-sec);
+  margin-bottom:25px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+ }
+ .form-subtitle i{margin-right:6px;color:var(--accent)}
+ 
+ .input-group{width:100%;margin-bottom:18px;position:relative}
+ .input-icon{
+  position:absolute;
+  left:16px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--accent);
+  font-size:0.9rem;
+  transition:all 0.3s ease;
+  z-index:2;
+  pointer-events:none;
+ }
+ .input-group:has(.login-input:focus) .input-icon{
+  color:#FFD700;
+  transform:translateY(-50%) scale(1.1);
+ }
+ 
+ .login-input{
+  width:100%;
+  padding:15px 16px 15px 48px;
+  border-radius:12px;
+  border:1.5px solid rgba(255,215,0,0.2);
+  background:rgba(255,255,255,0.05);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-size:0.9rem;
+  outline:none;
+  transition:all 0.3s cubic-bezier(0.16,1,0.3,1);
+ }
+ .login-input::placeholder{color:var(--text-muted);font-weight:300}
+ .login-input:focus{
+  border-color:var(--accent);
+  background:rgba(255,215,0,0.05);
+  box-shadow:0 0 0 4px rgba(255,215,0,0.1),0 0 25px rgba(255,215,0,0.15);
+ }
+ 
+ select.login-input{
+  appearance:none;
+  -webkit-appearance:none;
+  cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23FFD700' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 16px center;
+ }
+ select.login-input option{background:#0a1a40;color:#fff}
+ 
+ .btn-login{
+  width:100%;
+  padding:16px 24px;
+  margin-top:10px;
+  border:none;
+  border-radius:14px;
+  font-family:'Inter',sans-serif;
+  font-size:0.85rem;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,#FFD700,#FF1493);
+  color:#0a1640;
+  box-shadow:0 6px 25px rgba(255,215,0,0.3);
+  transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+ }
+ .btn-login::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);
+  transition:left 0.6s ease;
+ }
+ .btn-login:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 35px rgba(255,215,0,0.4);
+ }
+ .btn-login:hover::before{left:100%}
+ .btn-login:active{transform:translateY(-1px) scale(0.98)}
+ .btn-login i{margin-left:8px;transition:transform 0.3s ease}
+ .btn-login:hover i{transform:translateX(4px)}
+
+ #loading-soal-overlay{position:fixed;inset:0;background:rgba(4,8,16,0.92);z-index:99998;display:none;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+ #loading-soal-overlay.show{display:flex}
+ .loading-soal-spinner{width:50px;height:50px;border:3px solid rgba(255,215,0,0.15);border-top:3px solid var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;margin-bottom:20px}
+ .loading-soal-text{font-size:0.85rem;color:var(--text-sec);letter-spacing:1px;font-weight:500}
+ .loading-soal-text i{margin-right:8px;color:var(--accent)}
+
+ .student-info-bar{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  max-width:1050px;
+  margin:0 auto 16px;
+  padding:16px 20px;
+  background:var(--bg-card);
+  border:1.5px solid rgba(255,215,0,0.2);
+  border-radius:16px;
+  backdrop-filter:var(--glass-blur);
+  -webkit-backdrop-filter:var(--glass-blur);
+  position:relative;
+  z-index:10;
+ }
+ .student-info-bar::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:15%;
+  bottom:15%;
+  width:4px;
+  background:linear-gradient(180deg,var(--accent),var(--cyan));
+  border-radius:3px;
+ }
+ .student-photo{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  overflow:hidden;
+  border:2.5px solid rgba(255,215,0,0.4);
+  background:rgba(255,255,255,0.05);
+  flex-shrink:0;
+ }
+ .student-photo img{width:100%;height:100%;object-fit:cover}
+ .student-detail{display:flex;flex-direction:column;justify-content:center}
+ .student-detail .name{font-size:1rem;font-weight:700;color:var(--text);text-transform:uppercase;line-height:1.2}
+ .student-detail .class-info{font-size:0.8rem;color:var(--text-sec)}
+ .student-detail .status-online{font-size:0.7rem;font-weight:700;color:var(--success);margin-top:3px}
+ .student-detail .status-online i{font-size:6px;vertical-align:middle;margin-right:5px}
+ .student-info-right{margin-left:auto;text-align:right;border-left:1px solid rgba(255,255,255,0.08);padding-left:16px}
+
+ .quiz-wrapper{display:flex;gap:18px;max-width:1050px;margin:0 auto;flex-wrap:wrap;justify-content:center;align-items:flex-start;position:relative;z-index:10}
+ .quiz-container{
+  flex:2.2;
+  min-width:320px;
+  padding:25px 28px;
+  background:var(--bg-card);
+  border:1.5px solid rgba(255,215,0,0.2);
+  border-radius:20px;
+  backdrop-filter:var(--glass-blur);
+  -webkit-backdrop-filter:var(--glass-blur);
+  box-shadow:0 8px 32px rgba(0,0,0,0.3);
+  transform:translateZ(0);
+  will-change:transform;
+ }
+ #q-header{
+  font-weight:700;
+  font-size:0.9rem;
+  color:var(--accent);
+  border-bottom:1.5px solid rgba(255,215,0,0.2);
+  padding-bottom:12px;
+  margin-bottom:16px;
+ }
+ #quiz-content{
+  color:var(--text);
+  line-height:1.8;
+  font-size:1.05rem;
+ }
+ #quiz-content img{
+  display:block!important;
+  width:100%!important;
+  height:auto!important;
+  margin:18px 0!important;
+  border-radius:12px;
+  border:1.5px solid rgba(255,255,255,0.08);
+ }
+ #quiz-content table{
+  width:100%!important;
+  border-collapse:collapse;
+  margin:18px 0;
+  background:rgba(255,255,255,0.03);
+  border-radius:10px;
+  overflow:hidden;
+ }
+ #quiz-content table td,#quiz-content table th{
+  border:1px solid rgba(255,255,255,0.1);
+  padding:12px 16px;
+  color:var(--text);
+ }
+ #quiz-content table th{
+  background:rgba(255,215,0,0.1);
+  font-weight:600;
+  font-size:0.85rem;
+  text-transform:uppercase;
+ }
+ #quiz-content table td:first-child,#quiz-content table th:first-child{width:70%;text-align:left}
+ #quiz-content table td:not(:first-child),#quiz-content table th:not(:first-child){width:15%;text-align:center;vertical-align:middle}
+ 
+ .option{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 16px;
+  border:1.5px solid rgba(255,255,255,0.08);
+  margin:10px 0;
+  border-radius:14px;
+  cursor:pointer;
+  background:rgba(255,255,255,0.03);
+  transition:all 0.3s ease;
+  font-size:0.95rem;
+  color:var(--text);
+ }
+ .option:hover{
+  background:rgba(255,215,0,0.06);
+  border-color:rgba(255,215,0,0.2);
+  transform:translateX(3px);
+ }
+ .option.selected{
+  background:rgba(255,215,0,0.15);
+  border-color:rgba(255,215,0,0.4);
+ }
+ .opt-circle{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  font-size:0.8rem;
+  background:rgba(255,255,255,0.08);
+  color:var(--text-sec);
+  flex-shrink:0;
+  border:1.5px solid rgba(255,255,255,0.1);
+  transition:all 0.3s ease;
+ }
+ .option.selected .opt-circle{
+  background:var(--accent);
+  color:#0a1640;
+  border-color:var(--accent);
+  transform:scale(1.1);
+ }
+ .option img{
+  max-width:220px!important;
+  width:auto!important;
+  display:inline-block!important;
+  border-radius:8px;
+  margin-top:10px;
+ }
+ #input-isian{
+  width:100%;
+  padding:14px 16px;
+  border:1.5px solid rgba(255,215,0,0.2);
+  border-radius:14px;
+  background:rgba(255,255,255,0.05);
+  color:var(--text);
+  font-family:'Inter',sans-serif;
+  font-size:0.95rem;
+  outline:none;
+ }
+ #input-isian:focus{
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(255,215,0,0.1);
+ }
+
+ #nav-sidebar{
+  width:200px;
+  padding:18px;
+  height:fit-content;
+  position:sticky;
+  top:90px;
+  background:var(--bg-card);
+  border:1.5px solid rgba(255,215,0,0.2);
+  border-radius:20px;
+  backdrop-filter:var(--glass-blur);
+  -webkit-backdrop-filter:var(--glass-blur);
+  transform:translateZ(0);
+  will-change:transform;
+ }
+ .nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+ .nav-btn{
+  aspect-ratio:1;
+  border:1.5px solid rgba(255,255,255,0.1);
+  border-radius:10px;
+  background:rgba(255,255,255,0.04);
+  color:var(--text-sec);
+  cursor:pointer;
+  font-weight:700;
+  font-size:0.75rem;
+  transition:all 0.25s ease;
+  font-family:'Inter',sans-serif;
+ }
+ .nav-btn:hover{background:rgba(255,255,255,0.1);transform:scale(1.05)}
+ .nav-btn.answered{
+  background:var(--success)!important;
+  color:white!important;
+  border-color:var(--success)!important;
+ }
+ .nav-btn.current{
+  background:var(--accent)!important;
+  color:#000!important;
+  border:2px solid var(--accent)!important;
+  transform:scale(1.1);
+ }
+ .timer-label{
+  font-size:0.65rem;
+  color:var(--text-muted);
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  text-align:center;
+  margin-bottom:6px;
+ }
+ #timer{
+  font-weight:900;
+  color:var(--danger);
+  font-size:1.6rem;
+  text-align:center;
+  margin-bottom:16px;
+  font-variant-numeric:tabular-nums;
+ }
+ .btn-main{
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:var(--accent);
+  border:1.5px solid rgba(255,215,0,0.2);
+  padding:11px 26px;
+  border-radius:14px;
+  font-weight:700;
+  font-size:0.85rem;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:all 0.3s ease;
+  font-family:'Inter',sans-serif;
+ }
+
+ .thanks-wrapper{max-width:600px;margin:40px auto;padding:10px}
+ .thanks-card{
+  background:var(--bg-card);
+  border:2px solid rgba(255,215,0,0.3);
+  border-radius:30px;
+  padding:50px 40px;
+  text-align:center;
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  box-shadow:0 20px 80px rgba(0,0,0,0.4),0 0 60px rgba(255,215,0,0.15);
+  position:relative;
+  overflow:hidden;
+  animation:celebratePulse 3s ease-in-out infinite;
+ }
+ .thanks-card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:5px;
+  background:linear-gradient(90deg,#FFD700,#FF1493,#1E3A8A,#FFD700);
+  background-size:300% 100%;
+  animation:gradientBorder 5s linear infinite;
+ }
+ .thanks-card::after{
+  content:"";
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background:radial-gradient(circle,rgba(255,215,0,0.1) 0%,transparent 70%);
+  animation:floatUp 6s ease-in-out infinite;
+  pointer-events:none;
+ }
+ /* ====== LINGKARAN (HALAMAN UJIAN SELESAI) ====== */
+ .thanks-logo-wrap{
+  width:120px;               /* <-- UKURAN LINGKARAN */
+  height:120px;              /* harus sama supaya bulat */
+  background:linear-gradient(135deg,rgba(255,215,0,0.2),rgba(255,20,147,0.2));
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 25px;
+  border:3px solid rgba(255,215,0,0.4);
+  box-shadow:0 0 40px rgba(255,215,0,0.3);
+  position:relative;
+  z-index:1;
+  animation:floatUp 3s ease-in-out infinite;
+ }
+
+ /* ====== LOGO (ISI DI DALAMNYA) ====== */
+ .thanks-logo-img{
+  width:160px;               /* <-- UKURAN LOGO (terpisah dari lingkaran) */
+  height:auto;
+  object-fit:contain;
+  display:block;
+ }
+ .thanks-title{
+  font-size:2rem;
+  font-weight:900;
+  background:linear-gradient(135deg,#FFD700,#FF1493,#00d4ff);
+  background-size:200% 200%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  margin-bottom:10px;
+  position:relative;
+  z-index:1;
+  animation:gradS 5s ease infinite;
+  text-shadow:0 0 30px rgba(255,215,0,0.3);
+ }
+ .thanks-subtitle{color:var(--text-sec);font-size:0.95rem;margin-bottom:30px;position:relative;z-index:1}
+ .thanks-identity{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,215,0,0.2);
+  border-radius:16px;
+  padding:20px 25px;
+  margin:25px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:relative;
+  z-index:1;
+ }
+ .thanks-identity .name{
+  font-weight:800;
+  font-size:1.1rem;
+  color:var(--text);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+ }
+ .thanks-identity .class-label{font-size:0.85rem;color:var(--cyan);font-weight:600;margin-top:5px}
+ .thanks-identity .badge{
+  background:linear-gradient(135deg,#FFD700,#FF1493);
+  color:#0a1640;
+  padding:8px 18px;
+  border-radius:20px;
+  font-size:0.75rem;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  box-shadow:0 4px 15px rgba(255,215,0,0.3);
+ }
+ .thanks-motivation{margin:30px 0;position:relative;z-index:1}
+ .thanks-motivation-icon{
+  font-size:2.5rem;
+  color:#FFD700;
+  margin-bottom:15px;
+  animation:floatUp 2s ease-in-out infinite;
+  text-shadow:0 0 20px rgba(255,215,0,0.5);
+ }
+ .thanks-motivation-text{font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:8px;font-style:italic}
+ .thanks-motivation-sub{font-size:0.85rem;color:var(--text-muted)}
+ .thanks-btn{
+  width:100%;
+  padding:16px;
+  background:linear-gradient(135deg,#FFD700,#FF1493);
+  color:#0a1640;
+  border:none;
+  border-radius:14px;
+  font-size:0.95rem;
+  font-weight:800;
+  cursor:pointer;
+  transition:all 0.3s ease;
+  font-family:'Inter',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-top:20px;
+  position:relative;
+  z-index:1;
+  box-shadow:0 6px 25px rgba(255,215,0,0.3);
+ }
+ .thanks-btn:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(255,215,0,0.4)}
+ .thanks-btn i{margin-right:8px}
+ .thanks-footer{
+  margin-top:25px;
+  font-size:0.7rem;
+  color:var(--text-muted);
+  font-weight:600;
+  letter-spacing:1px;
+  position:relative;
+  z-index:1;
+ }
+ .confetti{
+  position:absolute;
+  width:10px;
+  height:10px;
+  animation:confetti-fall 3s linear forwards;
+  z-index:0;
+ }
+ @keyframes confetti-fall{
+  0%{transform:translateY(-100px) rotate(0deg);opacity:1}
+  100%{transform:translateY(600px) rotate(720deg);opacity:0}
+ }
+
+ @media(max-width:768px){
+ .login-card{padding:40px 25px 35px}
+ .judul-gradien{font-size:1.5rem}
+ .student-info-bar{flex-wrap:wrap;gap:12px}
+ .student-info-right{margin-left:0;border-left:none;padding-left:0;border-top:1px solid rgba(255,255,255,0.08);padding-top:12px;width:100%;text-align:left}
+ .quiz-wrapper{flex-direction:column}
+ #nav-sidebar{width:100%;position:static;order:-1}
+ .nav-grid{grid-template-columns:repeat(10,1fr)}
+ .thanks-card{padding:40px 25px;margin:20px auto}
+ .thanks-title{font-size:1.6rem}
+ .thanks-identity{flex-direction:column;text-align:center;gap:10px}
+ }
+ @media(max-width:380px){
+ .login-card{border-radius:24px;padding:35px 20px 30px}
+ .judul-gradien{font-size:1.3rem}
+ .nav-grid{grid-template-columns:repeat(5,1fr)}
+ .thanks-card{padding:35px 20px}
+ .thanks-title{font-size:1.4rem}
+ }
+ #print-area{display:none}
+ @media print{*,html,body{overflow:visible!important;height:auto!important;min-height:auto!important;position:static!important}body>*:not(#print-area){display:none!important}#print-area{display:block!important;width:100%!important}table{width:100%!important;border-collapse:collapse!important;page-break-inside:auto!important}tr{page-break-inside:avoid!important}th,td{border:1px solid black!important;padding:8px!important}img{max-width:250px!important;display:block!important;margin:10px 0!important}}
+
+ .soft-orb{position:fixed;border-radius:50%;pointer-events:none;z-index:-1;opacity:0.4;background:radial-gradient(circle,rgba(255,255,255,0.6) 0%,transparent 70%);width:300px;height:300px;top:20%;right:10%;animation:orbFloat 25s linear infinite;will-change:transform}
+ @keyframes orbFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,20px)}}
+
+     /* ===== HEADER HANYA TAMPIL DI LOGIN/UJIAN (BUKAN SPLASH) ===== */
+    body { padding-top: 62px !important; }
+    body.splash-active { padding-top: 0 !important; }
+    body.splash-active #main-header { display: none !important; }
+    #main-header {
+        position: fixed !important; top: 0 !important; left: 0 !important;
+        width: 100% !important; z-index: 1000 !important;
+    }
+
+    /* ========== CSS OPENING SCREEN FUTURISTIK ========== */
+    #opening-screen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000414; z-index: 99999; transition: opacity 1.5s ease-out; display: flex; justify-content: center; align-items: center; overflow: hidden !important; }
+    #opening-screen.fade-out { opacity: 0; pointer-events: none; }
+
+    /* WARNA BIRU DIPERLEBAR KE SAMPING KIRI & KANAN */
+    .video-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse 100% 90% at 50% 50%, #0044ff 0%, #00118a 65%, #000000 100%); animation: cameraZoom 10s ease-in-out infinite alternate; z-index: 1; }
+    @keyframes cameraZoom { 0% { transform: scale(1); } 100% { transform: scale(1.2); } }
+
+    .grid-floor { position: absolute; bottom: -50%; left: -50%; width: 200%; height: 200%; background-image: linear-gradient(rgba(0, 255, 255, 0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 0.2) 1px, transparent 1px); background-size: 50px 50px; transform: perspective(400px) rotateX(60deg); animation: gridScroll 4s linear infinite; z-index: 2; opacity: 0.5; }
+    @keyframes gridScroll { 0% { transform: perspective(400px) rotateX(60deg) translateY(0); } 100% { transform: perspective(400px) rotateX(60deg) translateY(50px); } }
+
+    .particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3; background-image: radial-gradient(2px 2px at 20px 30px, #00ffff, transparent), radial-gradient(2px 2px at 40px 70px, #fff, transparent), radial-gradient(1px 1px at 90px 40px, #ff8800, transparent), radial-gradient(2px 2px at 130px 80px, #00ffff, transparent), radial-gradient(1px 1px at 160px 30px, #fff, transparent), radial-gradient(1px 1px at 200px 90px, #ff8800, transparent); background-repeat: repeat; background-size: 250px 250px; animation: particlesMove 5s linear infinite; }
+    @keyframes particlesMove { 0% { transform: translateY(0); opacity: 0.5; } 50% { opacity: 1; } 100% { transform: translateY(-250px); opacity: 0.5; } }
+
+    .glowing-orb { position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(0, 221, 255, 0.4) 0%, transparent 70%); border-radius: 50%; z-index: 4; animation: orbFloat 8s ease-in-out infinite; filter: blur(20px); }
+    @keyframes orbFloat { 0%, 100% { top: 20%; left: 10%; transform: scale(1); } 50% { top: 60%; left: 70%; transform: scale(1.5); } }
+
+    .splash-vignette { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, transparent 40%, #000000 100%); z-index: 5; pointer-events: none; }
+
+    /* CONTAINER DIGESER NAIK KE ATAS */
+    .splash-container { text-align: center; width: 100%; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; position: relative; margin-top: -80px; }
+    @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+
+    /* UKURAN KOTAK LOGO DIPERBESAR */
+    .logo-container { position: relative; width: 220px; height: 220px; display: flex; justify-content: center; align-items: center; margin-bottom: 40px; opacity: 0; animation: dramaticZoom 1.3s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards; }
+    
+    .impact-flash { position: absolute; top: 50%; left: 50%; width: 150px; height: 150px; background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,255,255,0.6) 40%, transparent 70%); border-radius: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0; z-index: 6; mix-blend-mode: screen; animation: flashBurst 0.4s ease-out 0.9s forwards; }
+    @keyframes flashBurst { 0% { transform: translate(-50%, -50%) scale(0); opacity: 1; } 50% { transform: translate(-50%, -50%) scale(15); opacity: 0.8; } 100% { transform: translate(-50%, -50%) scale(25); opacity: 0; } }
+
+    .glow-burst { position: absolute; width: 150px; height: 150px; background: radial-gradient(circle, rgba(0,255,255,0.9) 0%, rgba(255,136,0,0.4) 50%, transparent 70%); border-radius: 50%; opacity: 0; z-index: 4; filter: blur(15px); animation: glowExpand 0.6s ease-out 0.9s forwards; }
+    @keyframes glowExpand { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(5); opacity: 0; } }
+
+    .shockwave, .shockwave-2 { position: absolute; width: 150px; height: 150px; border-radius: 50%; opacity: 0; z-index: 5; }
+    .shockwave { border: 4px solid #00ffff; box-shadow: 0 0 30px #00ffff, inset 0 0 20px #00ffff; animation: shockwaveExpand 0.8s ease-out 0.9s forwards; }
+    .shockwave-2 { border: 2px solid #ff8800; box-shadow: 0 0 20px #ff8800; animation: shockwaveExpand2 1s ease-out 1s forwards; }
+    @keyframes shockwaveExpand { 0% { transform: scale(0.5); opacity: 1; border-width: 6px; } 100% { transform: scale(6); opacity: 0; border-width: 0px; } }
+    @keyframes shockwaveExpand2 { 0% { transform: scale(0.5); opacity: 1; border-width: 4px; } 100% { transform: scale(9); opacity: 0; border-width: 0px; } }
+
+    @keyframes dramaticZoom { 0% { transform: scale(0); opacity: 0; } 30% { opacity: 1; } 60% { transform: scale(3); opacity: 1; } 75% { transform: scale(1.1); opacity: 1; } 85% { transform: scale(1); } 100% { transform: scale(1); opacity: 1; } }
+
+    .ring1, .ring2, .ring3 { position: absolute; border-radius: 50%; }
+    .ring1 { width: 100%; height: 100%; border: 2px dashed rgba(0, 255, 255, 0.6); animation: spin 8s linear infinite; }
+    .ring2 { width: 120%; height: 120%; border: 2px solid transparent; border-top: 4px solid #ff8800; border-left: 4px solid #ff8800; box-shadow: 0 0 20px rgba(255, 136, 0, 0.6); animation: spinReverse 5s linear infinite; }
+    .ring3 { width: 90%; height: 90%; border: 1px solid rgba(255, 255, 255, 0.3); border-bottom: 4px solid #00ffff; box-shadow: 0 0 15px rgba(0, 255, 255, 0.8); animation: spin 3s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    @keyframes spinReverse { 100% { transform: rotate(-360deg); } }
+
+    /* UKURAN LOGO DIPERBESAR */
+    .logo-splash { width: 220px; height: 220px; object-fit: contain; border-radius: 50%; z-index: 7; animation: pulseGlow 2s ease-in-out 1.5s infinite alternate; mix-blend-mode: screen; filter: drop-shadow(0 0 10px #00ffff); }
+    @keyframes pulseGlow { 0% { box-shadow: 0 0 20px rgba(0, 221, 255, 0.5); filter: drop-shadow(0 0 5px #00ffff); } 100% { box-shadow: 0 0 50px rgba(0, 221, 255, 1), 0 0 80px rgba(0, 100, 255, 0.5); filter: drop-shadow(0 0 15px #00ffff); } }
+
+        .welcome-text { 
+        font-size: clamp(0.9rem, 4vw, 1.2rem); 
+        letter-spacing: 2px; 
+        text-transform: uppercase; 
+        color: #00ffff; 
+        margin-bottom: 15px; 
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.8); 
+        animation: fadeInUp 1s ease-out 1.4s forwards; 
+        opacity: 0; 
+        white-space: nowrap; /* TAMBAHAN INI */
+    }
+    
+    /* TULISAN SEKOLAH DIBUAT SATU BARIS */
+    .school-name { font-size: clamp(1.1rem, 4vw, 1.6rem); font-weight: 800; text-transform: uppercase; color: #fff; line-height: 1.4; max-width: 95vw; animation: fadeInUp 1s ease-out 1.6s forwards; opacity: 0; padding: 0 10px; text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); white-space: nowrap; }
+
+    .bottom-loader { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); width: 70%; max-width: 300px; height: 4px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; overflow: hidden; z-index: 15; opacity: 0; animation: fadeInLoader 1s ease-out 1.8s forwards; }
+    @keyframes fadeInLoader { 0% { opacity: 0; transform: translateX(-50%) translateY(20px); } 100% { opacity: 1; transform: translateX(-50%) translateY(0); } }
+    .loading-laser { width: 40%; height: 100%; background: linear-gradient(90deg, transparent, #00ffff, #ff8800); box-shadow: 0 0 15px #00ffff; animation: laserMove 1.5s infinite ease-in-out; }
+    @keyframes laserMove { 0% { transform: translateX(-100%); } 100% { transform: translateX(350%); } }
+
+    @media (max-width: 480px) {
+            /* KONTAINER LOGO DIPERBESAR */
+    .logo-container { position: relative; width: 280px; height: 280px; display: flex; justify-content: center; align-items: center; margin-bottom: 40px; opacity: 0; animation: dramaticZoom 1.3s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s forwards; }
+    
+    /* ELEMEN LEDAKAN DISESUAIKAN DENGAN UKURAN LOGO BARU */
+    .impact-flash { position: absolute; top: 50%; left: 50%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,255,255,0.6) 40%, transparent 70%); border-radius: 50%; transform: translate(-50%, -50%) scale(0); opacity: 0; z-index: 6; mix-blend-mode: screen; animation: flashBurst 0.4s ease-out 0.9s forwards; }
+    
+    .glow-burst { position: absolute; width: 200px; height: 200px; background: radial-gradient(circle, rgba(0,255,255,0.9) 0%, rgba(255,136,0,0.4) 50%, transparent 70%); border-radius: 50%; opacity: 0; z-index: 4; filter: blur(15px); animation: glowExpand 0.6s ease-out 0.9s forwards; }
+    
+    .shockwave, .shockwave-2 { position: absolute; width: 200px; height: 200px; border-radius: 50%; opacity: 0; z-index: 5; }
+
+    
+
+    /* RING DIPERBESAR & DIPERKUAT ANIMASINYA */
+    .ring1, .ring2, .ring3 { position: absolute; border-radius: 50%; }
+    .ring1 { width: 100%; height: 100%; border: 3px dashed rgba(0, 255, 255, 0.8); animation: spin 8s linear infinite; }
+    .ring2 { width: 135%; height: 135%; border: 2px solid transparent; border-top: 5px solid #ff8800; border-left: 5px solid #ff8800; box-shadow: 0 0 25px rgba(255, 136, 0, 0.8); animation: spinReverse 5s linear infinite; }
+    .ring3 { width: 115%; height: 115%; border: 2px solid rgba(255, 255, 255, 0.3); border-bottom: 5px solid #00ffff; box-shadow: 0 0 20px rgba(0, 255, 255, 1); animation: spin 3s linear infinite; }
+     
+ /* ========== CSS KHUSUS MENJODOHKAN ========== */
+ .menjodohkan-container{margin-top:15px}
+ .jodohkan-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;background:rgba(255,255,255,0.03);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.08)}
+ .jodohkan-kiri{flex:1;font-weight:600;color:var(--text);font-size:0.95rem;line-height:1.4;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+ .jodohkan-nomor{font-weight:800;color:var(--accent)}
+ .jodohkan-kiri-img{max-width:130px;max-height:100px;object-fit:contain;border-radius:8px;border:1.5px solid rgba(255,215,0,0.25);background:rgba(255,255,255,0.05);padding:4px}
+ .jodohkan-kanan{flex:1;display:flex;justify-content:flex-end}
+ .btn-pilih-jodoh{background:rgba(255,215,0,0.15);border:1px solid rgba(255,215,0,0.3);color:var(--accent);padding:10px 16px;border-radius:10px;font-size:0.85rem;font-weight:600;cursor:pointer;width:100%;text-align:center}
+ .jodohkan-preview-img{position:relative;cursor:pointer;border-radius:10px;overflow:hidden;border:2px solid var(--accent);width:100%;max-width:150px;text-align:center}
+ .jodohkan-preview-img img{display:block;width:100%;height:80px;object-fit:cover}
+ .jodohkan-preview-text{background:rgba(46,204,113,0.15);border:1px solid rgba(46,204,113,0.4);color:var(--success);padding:10px 16px;border-radius:10px;font-size:0.9rem;font-weight:600;cursor:pointer;text-align:center;width:100%}
+ .ganti-btn{display:block;font-size:0.7rem;color:var(--text-muted);margin-top:4px;text-decoration:underline}
+ .jodohkan-options-box{margin:-5px 0 15px 0;padding:15px;background:rgba(10,22,64,0.6);border:1px dashed rgba(255,215,0,0.3);border-radius:12px}
+ .jodohkan-options-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:12px}
+ .jodohkan-opt-img,.jodohkan-opt-text{background:rgba(255,255,255,0.05);border:2px solid rgba(255,255,255,0.1);border-radius:10px;padding:8px;text-align:center;cursor:pointer;font-size:0.85rem;color:var(--text);display:flex;align-items:center;justify-content:center;min-height:80px}
+ .jodohkan-opt-img img{max-width:100%;max-height:100px;object-fit:contain;border-radius:6px}
+ .jodohkan-opt-img:hover,.jodohkan-opt-text:hover{border-color:var(--accent);background:rgba(255,215,0,0.1)}
+ .jodohkan-opt-img.active,.jodohkan-opt-text.active{border-color:var(--success);background:rgba(46,204,113,0.15);box-shadow:0 0 15px rgba(46,204,113,0.3)}
+ @media(max-width:480px){.jodohkan-row{flex-direction:column;align-items:flex-start}.jodohkan-kanan{width:100%;justify-content:flex-start;margin-top:8px}.jodohkan-options-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ============================================
+   AUDIO PLAYER (TEMA GELAP & EMAS)
+   ============================================ */
+.audio-player-box {
+    background: rgba(255, 215, 0, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-left: 4px solid #ffd700;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.audio-icon {
+    font-size: 1.5rem;
+    color: #ffd700;
+    animation: pulseAudio 2s infinite;
+}
+@keyframes pulseAudio {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.audio-player-box audio {
+    flex: 1;
+    height: 40px;
+    border-radius: 20px;
+    outline: none;
+}
+/* Memaksa audio player jadi gelap di Chrome/Edge */
+audio::-webkit-media-controls-panel {
+    background-color: #1a1f4d;
+}
+
+</style>
+
+<!-- 1. Konfigurasi MathJax -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  };
+</script>
+
+<!-- 2. Panggil Library MathJax v3 -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body class="bright-bg splash-active">
+
+<div id="opening-screen">
+    <div class="video-bg"></div>
+    <div class="grid-floor"></div>
+    <div class="particles"></div>
+    <div class="glowing-orb"></div>
+    <div class="splash-vignette"></div>
+
+    <div class="splash-container">
+        <div class="logo-container">
+            <div class="impact-flash"></div>
+            <div class="glow-burst"></div>
+            <div class="shockwave"></div>
+            <div class="shockwave-2"></div>
+            <div class="ring1"></div>
+            <div class="ring2"></div>
+            <div class="ring3"></div>
+            <img src="https://drive.google.com/thumbnail?id=1gj73Am1H0Knq4rEEvCsC5SN2CKELBXxe&sz=w1000" alt="Logo Sekolah" class="logo-splash">
+        </div>
+        <h2 class="welcome-text">SELAMAT DATANG</h2>
+        <h2 class="welcome-text" style="margin-bottom:15px; color:#ffffff; animation-delay:1.5s;">DI RUANG UJIAN DIGITAL</h2>
+        <h1 class="school-name">SMP HAMALATUL QURAN RINGINAGUNG</h1>
+    </div>
+
+    <div class="bottom-loader">
+        <div class="loading-laser"></div>
+    </div>
+</div>
+
+<div id="loading-soal-overlay"><div class="loading-soal-spinner"></div><div class="loading-soal-text"><i class="fa fa-book-open"></i>Menyiapkan Soal Ujian...</div></div>
+
+<header id="main-header">
+  <div id="star-box"></div>
+  <div style="display:flex;align-items:center;gap:10px;z-index:10;position:relative;">
+    <div class="header-logo-wrap">
+    <img src="https://lh3.googleusercontent.com/d/1gj73Am1H0Knq4rEEvCsC5SN2CKELBXxe" 
+         alt="Logo" 
+         class="header-logo">
+</div>
+    <div style="line-height:1.15;">
+      <strong style="font-size:0.85rem;display:block;letter-spacing:0.3px;color:var(--text);">SMP HAMALATUL QURAN RINGINAGUNG</strong>
+      <div style="display:flex;align-items:center;font-size:0.7rem;color:var(--success);font-weight:700;"><span style="width:6px;height:6px;background:var(--success);border-radius:50%;display:inline-block;margin-right:6px;animation:pulseText 1.5s infinite"></span><span id="nama-ujian-header">SYSTEM UJIAN ONLINE</span></div>
+    </div>
+  </div>
+  <div style="margin-left:auto;display:flex;align-items:center;z-index:10;position:relative;">
+    <div style="text-align:right;display:flex;flex-direction:column;justify-content:center;line-height:1.15;">
+      <div id="baris-atas-tgl" style="font-size:0.75rem;color:var(--text-sec);"></div>
+      <div id="baris-bawah-jam" style="font-size:0.95rem;font-weight:800;color:var(--accent);margin-top:2px;"></div>
+    </div>
+  </div>
+</header>
+
+<div id="login-page" class="page">
+<div class="login-card">
+ <div class="login-header">
+  <div class="logo-luxury">
+    <img src="https://drive.google.com/thumbnail?id=1gj73Am1H0Knq4rEEvCsC5SN2CKELBXxe&sz=w1000" 
+         alt="Logo" 
+         class="logo-dalam">
+</div>
+  <h2 class="judul-gradien"><?= judulHalaman ?></h2>
+  <div class="judul-gradien" style="font-size:1.0rem;font-weight:600;margin-top:8px;"><?= namaSekolah ?></div>
+  <div id="status-badge">MENGECEK STATUS...</div>
+</div>
+ <div class="login-divider"><i class="fa-solid fa-diamond"></i></div>
+ <div class="login-form">
+ <p class="form-subtitle"><i class="fa-solid fa-key"></i> Masuk ke Sistem Ujian</p>
+ <div class="input-group">
+  <i class="fa-solid fa-id-card input-icon"></i>
+  <input type="text" id="nisn-input" class="login-input" placeholder="Masukkan NISN" autocomplete="off">
+ </div>
+ <div class="input-group">
+  <i class="fa-solid fa-lock input-icon"></i>
+  <input type="password" id="pass-input" class="login-input" placeholder="Masukkan Password">
+ </div>
+ <div class="input-group">
+  <i class="fa-solid fa-book input-icon"></i>
+  <select id="pilih-ujian-select" class="login-input">
+   <option value="">-- Pilih Mata Pelajaran --</option>
+  </select>
+ </div>
+ <button id="btn-start" onclick="loginSiswa()" class="btn-login">MASUK UJIAN <i class="fa fa-arrow-right"></i></button>
+ </div>
+</div>
+</div>
+
+<div id="quiz-page" class="page">
+<div class="student-info-bar">
+ <div class="student-photo"><img id="foto-siswa-img" src="" alt="Foto"></div>
+ <div class="student-detail">
+  <span class="name" id="txt-nama">-</span>
+  <span class="class-info">NISN: <b id="txt-nisn-display">-</b></span>
+  <span class="status-online"><i class="fa fa-circle"></i> SEDANG MENGERJAKAN UJIAN</span>
+ </div>
+ <div class="student-info-right">
+  <span id="label-guru" style="font-size:0.6rem;color:#ffffff;font-weight:700;display:block;letter-spacing:1px;text-transform:uppercase;"></span>
+<span id="txt-guru" style="font-size:0.82rem;color:#ffffff;"></span>
+ </div>
+</div>
+<div class="quiz-wrapper">
+ <div class="quiz-container">
+  <div id="q-header"></div>
+  <div id="quiz-content" class="notranslate" translate="no"></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:15px;">
+  <button class="btn-main" style="background:rgba(255,255,255,0.04);color:var(--text-sec);border:1.5px solid rgba(255,255,255,0.1);margin:0;padding:11px 26px;font-size:0.85rem;" onclick="prevQuestion()">KEMBALI</button>
+  <button class="btn-main" style="margin:0;padding:11px 26px;font-size:0.85rem;" id="next-btn" onclick="nextQuestion()">LANJUT</button>
+</div>
+ </div>
+ <div id="nav-sidebar">
+  <div class="timer-label">SISA WAKTU</div>
+  <div id="timer">00:00</div>
+  <div class="nav-grid" id="nav-buttons"></div>
+ </div>
+</div>
+</div>
+
+<div id="thanks-page" class="page" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:transparent;z-index:100000;overflow-y:auto;">
+<div class="thanks-wrapper">
+ <div class="thanks-card">
+    <div class="thanks-logo-wrap">
+    <img src="https://lh3.googleusercontent.com/d/1gj73Am1H0Knq4rEEvCsC5SN2CKELBXxe" 
+         alt="Logo" 
+         class="thanks-logo-img">
+</div>
+  <h2 class="thanks-title">🎉 UJIAN SELESAI! 🎉</h2>
+  <p class="thanks-subtitle">Selamat! Jawabanmu berhasil disimpan di sistem.</p>
+  
+  <div class="thanks-identity">
+   <div style="overflow:hidden;flex:1;">
+    <div id="hasil-nama" class="name">Memuat Nama...</div>
+    <div class="class-label">Kelas <span id="hasil-kelas">-</span></div>
+   </div>
+   <div class="badge">PESERTA</div>
+  </div>
+  
+  <div class="thanks-motivation">
+   <div class="thanks-motivation-icon">⭐</div>
+   <div class="thanks-motivation-text" id="motivation-text">Kamu lebih kuat dari yang kamu kira.</div>
+   <div class="thanks-motivation-sub">Nilai akan diumumkan oleh Guru</div>
+  </div>
+  
+  <button class="thanks-btn" onclick="location.reload()">
+   <i class="fa fa-home"></i>KEMBALI KE BERANDA
+  </button>
+  
+  <div class="thanks-footer">SMP HAMALATUL QURAN RINGINAGUNG • 2026</div>
+ </div>
+</div>
+</div>
+
+<script>
+// Global Error Handler - Mencegah halaman blank saat error
+window.addEventListener('error', function(e) {
+  console.error("Global Error:", e.message, "di", e.filename, "baris", e.lineno);
+  e.preventDefault();
+  return true;
+});
+window.addEventListener('unhandledrejection', function(e) {
+  console.error("Unhandled Promise Rejection:", e.reason);
+  e.preventDefault();
+  return true;
+});
+
+(function(){
+ // Karena animasi sudah pakai CSS Keyframes (forwards), sistem tinggal menunggu selesai lalu pindah halaman.
+ function executeTimeline(){
+  setTimeout(function(){
+   try {
+    var splash=document.getElementById('opening-screen');
+    if(!splash) return;
+    splash.classList.add('fade-out');
+    document.body.classList.remove('splash-active');
+    setTimeout(function(){
+     try {
+      splash.style.display = 'none';
+      var so = document.querySelector('.soft-orb'); if(so) so.remove();
+     }catch(e){}
+     var lp=document.getElementById('login-page');
+     if(lp){
+      lp.style.setProperty('display','flex','important');
+      lp.classList.add('active');
+      window.scrollTo(0,0);
+     }
+    }, 1500)
+   } catch(e) {
+    console.error("Error di executeTimeline:", e);
+   }
+  }, 5000); // 15000 ms = 15 detik
+ }
+
+ var ls = document.getElementById('loadingScreen');
+ if(ls) ls.classList.add('hidden');
+ 
+ executeTimeline();
+
+ document.addEventListener('dragover',function(e){e.preventDefault()});
+ document.addEventListener('drop',function(e){e.preventDefault();var f=e.dataTransfer.files[0];if(f&&(f.type==='image/png'||f.type==='image/jpeg')){var r=new FileReader();r.onload=function(ev){var l=document.getElementById('schoolLogo');if(l){l.src=ev.target.result;l.style.display='block';}var fb=document.getElementById('logoFallback');if(fb)fb.style.display='none'};r.readAsDataURL(f)}});
+})();
+var soalData=[];var dataSiswa={};var idUjianTerpilih="";var timeLeft=0;var currentSoal=0;var jawabanUser={};var isFinished=false;var isFinishedAlready=false;var listJawabanAnalisis=[];var examInterval;
+var tabSwitchCount=0;var audioCtx;var isQuizActive=false;var isHandlingTabSwitch=false;
+var debounceTimerIsian = null;
+var isRenderingIsian = false;
+
+// Variabel global untuk menampung zona waktu dari Google Spreadsheet
+var serverTimeZone = "<?= spreadsheetTimeZone ?>"; 
+
+function initHeaderStars(){
+  try{
+    var box=document.getElementById("star-box");
+    if(!box)return;
+    for(var i=0;i<20;i++){
+      var s=document.createElement("div");
+      s.className="star-particle";
+      var sz=Math.random()*2+1;
+      s.style.cssText="width:"+sz+"px;height:"+sz+"px;top:"+Math.random()*100+"%;left:"+Math.random()*100+"%;animation:twinkle "+(Math.random()*3+2)+"s infinite ease-in-out;animation-delay:"+Math.random()*5+"s;";
+      box.appendChild(s);
+    }
+  }catch(e){}
+}
+
+function updateClock(){
+  try{
+    var u=function(){
+      var d=new Date();
+      var tz = (typeof serverTimeZone !== 'undefined' && serverTimeZone !== "") ? serverTimeZone : "Asia/Makassar";
+      var label = "WITA";
+      if (tz === "Asia/Jakarta" || tz === "Asia/Pontianak") label = "WIB";
+      else if (tz === "Asia/Makassar" || tz === "Asia/Ujung_Pandang") label = "WITA";
+      else if (tz === "Asia/Jayapura") label = "WIT";
+      var fmt=new Intl.DateTimeFormat("id-ID",{
+        timeZone: tz,
+        weekday:"long",
+        day:"numeric",
+        month:"long",
+        year:"numeric",
+        hour:"2-digit",
+        minute:"2-digit",
+        second:"2-digit",
+        hour12:false
+      });
+      var parts=fmt.formatToParts(d);
+      var p={};
+      parts.forEach(function(item){ p[item.type]=item.value; });
+      var h = (p.hour || "00").padStart(2,"0");
+      var m = (p.minute || "00").padStart(2,"0");
+      var s = (p.second || "00").padStart(2,"0");
+      var t=p.weekday+", "+p.day+" "+p.month+" "+p.year;
+      var j=h+":"+m+":"+s+" "+label;
+      var eT=document.getElementById("baris-atas-tgl");
+      var eJ=document.getElementById("baris-bawah-jam");
+      if(eT)eT.innerText=t;
+      if(eJ)eJ.innerText=j;
+    };
+    setInterval(u,1000);
+    u();
+  }catch(e){}
+}
+function showLoadingSoal(){var lo=document.getElementById("loading-soal-overlay");if(lo)lo.classList.add("show");}
+function hideLoadingSoal(){var lo=document.getElementById("loading-soal-overlay");if(lo)lo.classList.remove("show");}
+
+function playWarningSound(){try{if(!audioCtx){audioCtx=new(window.AudioContext||window.webkitAudioContext)();}var o1=audioCtx.createOscillator();var g1=audioCtx.createGain();o1.connect(g1);g1.connect(audioCtx.destination);o1.type='square';o1.frequency.setValueAtTime(800,audioCtx.currentTime);g1.gain.setValueAtTime(0.3,audioCtx.currentTime);o1.start(audioCtx.currentTime);o1.stop(audioCtx.currentTime+0.25);var o2=audioCtx.createOscillator();var g2=audioCtx.createGain();o2.connect(g2);g2.connect(audioCtx.destination);o2.type='square';o2.frequency.setValueAtTime(600,audioCtx.currentTime+0.3);g2.gain.setValueAtTime(0.3,audioCtx.currentTime+0.3);o2.start(audioCtx.currentTime+0.3);o2.stop(audioCtx.currentTime+0.55);}catch(e){}}
+
+document.addEventListener("visibilitychange",function(){
+  try{
+    if(!document.hidden)return;
+    if(!isQuizActive||isFinishedAlready||isHandlingTabSwitch)return;
+    isHandlingTabSwitch=true;
+    tabSwitchCount++;
+
+    /* ===== STRIKE 1 dari 3 ===== */
+    if(tabSwitchCount===1){
+      playWarningSound();
+      Swal.fire({
+        title:"⚠️ PERINGATAN!",
+        html:"<b>Jangan pindah tab atau aplikasi lain!</b><br><br>Pelanggaran ke-1 tercatat <b>(1 dari 3)</b>.<br>Sisa kesempatan: <b style='color:#e67e22;font-size:18px;'>2</b>",
+        icon:"warning",
+        confirmButtonText:"MENGERTI, LANJUTKAN UJIAN",
+        allowOutsideClick:false
+      }).then(function(){
+        setTimeout(function(){isHandlingTabSwitch=false},500)
+      });
+    }
+
+    /* ===== STRIKE 2 dari 3 — PERINGATAN TERAKHIR ===== */
+    else if(tabSwitchCount===2){
+      playWarningSound();
+      Swal.fire({
+        title:"🚨 PERINGATAN TERAKHIR!",
+        html:"<b>Pelanggaran ke-2 tercatat (2 dari 3).</b><br><br>Sekali lagi Anda pindah tab/aplikasi — <span style='color:#e74c3c;font-weight:800;font-size:16px;'>UJIAN LANGSUNG DIHENTIKAN dan nilai dikirim otomatis TANPA konfirmasi apapun.</span>",
+        icon:"warning",
+        confirmButtonText:"MENGERTI, LANJUTKAN UJIAN",
+        allowOutsideClick:false
+      }).then(function(){
+        setTimeout(function(){isHandlingTabSwitch=false},500)
+      });
+    }
+
+    /* ===== STRIKE 3 — LANGSUNG SUBMIT, TANPA KLIK OK ===== */
+    else if(tabSwitchCount>=3){
+      playWarningSound();
+      isFinished=true;
+      if(examInterval)clearInterval(examInterval);
+      isHandlingTabSwitch=false;
+
+      /* Swal HANYA tampilan info — TIDAK ada tombol OK,
+         TIDAK nunggu klik, auto-close 3 detik.
+         finish(true) dipanggil LANGSUNG di bawah, BUKAN di .then() */
+      Swal.fire({
+        title:"🛑 UJIAN DIHENTIKAN!",
+        html:"<b>Pelanggaran ke-3 terdeteksi!</b><br>Jawaban sedang dikirim ke server...",
+        icon:"error",
+        showConfirmButton:false,
+        allowOutsideClick:false,
+        allowEscapeKey:false,
+        timer:3000,
+        timerProgressBar:true
+      });
+
+      /* ===== INI KUNCINYA: finish(true) LANGSUNG jalan,
+         TIDAK di-dalam .then() jadi tidak nunggu klik OK ===== */
+      finish(true);
+    }
+
+    else{
+      isHandlingTabSwitch=false;
+    }
+  }catch(e){
+    isHandlingTabSwitch=false;
+  }
+});
+
+
+window.onload=function(){
+ try{updateClock()}catch(e){}
+ try{initHeaderStars()}catch(e){}
+
+ var select=document.getElementById("pilih-ujian-select");
+ var badge=document.getElementById("status-badge");
+ if(badge){badge.innerText="MENGECEK JADWAL...";badge.style.backgroundColor="rgba(255,255,255,0.05)";badge.style.color="var(--accent)";}
+ try{google.script.run.withSuccessHandler(function(res){try{if(res&&res.daftar&&res.daftar.length>0){select.innerHTML='<option value="">-- Pilih Mata Pelajaran --</option>';        
+          res.daftar.forEach(function(u){
+          var opt=document.createElement("option");
+          opt.value=u.id;
+          opt.text=u.judul;
+          opt.dataset.durasi=u.durasi;
+          opt.dataset.mulai=u.mulai;
+          opt.dataset.berakhir=u.berakhir; // TAMBAHKAN INI
+          select.add(opt);
+        });
+        if(badge)badge.innerText="SILAKAN PILIH PELAJARAN";select.onchange=function(){
+  var opt=select.options[select.selectedIndex];
+  if(!opt||!opt.value){badge.innerText="SILAKAN PILIH PELAJARAN";return;}
+  var mt=parseInt(opt.dataset.mulai)||0;
+  var wb=parseInt(opt.dataset.berakhir)||0; // TAMBAHAN: Ambil waktu berakhir
+  var sk=new Date().getTime();
+  
+  if(mt===0){
+    badge.innerText="JADWAL BELUM TERSEDIA";
+    badge.style.color="#f87171";
+    badge.style.borderColor="rgba(231,76,60,0.3)";
+  }else if(sk<mt){
+    var wm=new Date(mt);
+    // ZONA WAKTU FLEKSIBEL: mengikuti Spreadsheet (sama persis dengan header)
+    var tz=(typeof serverTimeZone!=="undefined"&&serverTimeZone!=="")?serverTimeZone:"Asia/Jakarta";
+    var label="WIB";
+    if(tz==="Asia/Makassar"||tz==="Asia/Ujung_Pandang"){label="WITA";}
+    else if(tz==="Asia/Jayapura"){label="WIT";}
+    var fmt=new Intl.DateTimeFormat("id-ID",{
+      weekday:"long",day:"numeric",month:"long",year:"numeric",
+      hour:"2-digit",minute:"2-digit",timeZone:tz
+    });
+    badge.innerHTML="MULAI: "+fmt.format(wm).toUpperCase().replace(/\./g,":")+" "+label;
+    badge.style.color="#fbbf24";
+    badge.style.borderColor="rgba(255,193,7,0.3)";
+  }else if(wb!==0 && sk>wb){ // TAMBAHAN: CEK WAKTU BERAKHIR
+    badge.innerText="UJIAN SUDAH BERAKHIR";
+    badge.style.color="#f87171";
+    badge.style.borderColor="rgba(231,76,60,0.3)";
+  }else{
+    badge.innerText="UJIAN SIAP DIMULAI";
+    badge.style.color="#2ecc71";
+    badge.style.borderColor="rgba(46,204,113,0.3)";
+  }
+};
+}else{if(badge){badge.innerText="BELUM ADA JADWAL AKTIF";badge.style.color="#f87171";}}}catch(e2){}}).withFailureHandler(function(err){if(badge){badge.innerText="GAGAL MUAT DATA";badge.style.color="#f87171";}}).getConfigs();}catch(e3){if(badge){badge.innerText="OFFLINE MODE";badge.style.color="#f87171";}}
+};
+
+function showPage(id){var pages=document.querySelectorAll(".page");for(var i=0;i<pages.length;i++){pages[i].style.setProperty('display','none','important');pages[i].classList.remove("active");}var target=document.getElementById(id);if(target){target.classList.add("active");if(id==="login-page"){target.style.setProperty('display','flex','important');}else{target.style.setProperty('display','block','important');}window.scrollTo(0,0);}}
+
+function loginSiswa(){
+  var btn=document.getElementById("btn-start");
+  var elN=document.getElementById("nisn-input");
+  var elP=document.getElementById("pass-input");
+  var sel=document.getElementById("pilih-ujian-select");
+  var tx=btn.innerHTML;
+  
+  btn.disabled=true;
+  btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> MEMPROSES...';
+  
+  if(!elN||!elP||!sel){btn.disabled=false;btn.innerHTML=tx;return;}
+  var nv=elN.value.trim();
+  var pv=elP.value.trim();
+  var iv=sel.value;
+  var so=sel.options[sel.selectedIndex];
+  var wm=parseInt(so.dataset.mulai)||0;
+  var wb=parseInt(so.dataset.berakhir)||0; // AMBIL WAKTU BERAKHIR
+  var sk=new Date().getTime();
+  
+  if(nv===""||pv===""||iv===""){
+    btn.disabled=false;
+    btn.innerHTML=tx;
+    Swal.fire("⚠️ DATA BELUM LENGKAP","NISN, Password, dan Mata Pelajaran wajib diisi!","warning");
+    return;
+  }
+  
+  if(sk<wm){
+    btn.disabled=false;
+    btn.innerHTML=tx;
+    Swal.fire(" BELUM WAKTUNYA","Ujian belum dimulai. Silakan tunggu jadwal.","warning");
+    return;
+  }
+
+  // ===== TAMBAHAN: BLOK JIKA WAKTU UJIAN TELAH BERAKHIR =====
+  if(wb!==0 && sk>wb){
+    btn.disabled=false;
+    btn.innerHTML=tx;
+    var namaMapel = so.text; // Ambil nama mata pelajaran dari dropdown
+    Swal.fire({
+      title: "⏰ WAKTU UJIAN BERAKHIR",
+      html: "Jadwal ujian untuk mata pelajaran <b>" + namaMapel + "</b> telah berakhir.<br><br>Hubungi Guru kalian!",
+      icon: "error",
+      confirmButtonText: "OK"
+    });
+    return; // HENTIKAN PROSES MASUK UJIAN
+  }
+  // =========================================================
+
+  google.script.run.withSuccessHandler(function(res){
+    if(res.status==="success"){
+      
+      // ===== TAMBAHAN: POP-UP TATA TERTIB UJIAN =====
+      Swal.fire({
+        title: "<strong>PERSYARATAN & TATA TERTIB UJIAN</strong>",
+        html: `
+          <div style="text-align:left; font-size:0.85rem; line-height:1.6; color:#333; max-height:50vh; overflow-y:auto; padding-right:10px;">
+            <p style="font-weight:800; color:#d32f2f;">⚠️ HARAP DIBACA DENGAN SEKSAMA!</p>
+            <ol style="padding-left:20px;">
+              <li><b>Kejujuran:</b> Kerjakan soal ujian ini secara mandiri tanpa bantuan orang lain.</li>
+              <li><b>Dilarang Menyontek:</b> Dilarang membuka buku catatan, mencari jawaban di internet, atau bertanya kepada teman.</li>
+              <li><b>Layar Penuh (Fullscreen):</b> Jangan keluar dari halaman soal ujian selama ujian berlangsung.</li>
+              <li><b>Dilarang Pindah Tab/Aplikasi:</b> Jangan berpindah ke tab lain, membuka aplikasi lain, atau membuka pesan WhatsApp/Instagram.</li>
+              <li><b>Dilarang Buka AI:</b> Jangan menggunakan asisten AI (seperti Gemini, ChatGPT, dsb) atau menekan lama tombol navigasi HP.</li>
+              <li><b>Kamera/Video:</b> Jangan menggunakan layar split atau fitur layar terbagi di HP.</li>
+            </ol>
+            <div style="margin-top:15px; padding:10px; background:#ffebee; border:1px solid #ffcdd2; border-radius:8px; text-align:center;">
+              <b style="color:#d32f2f;">SANKSI PELANGGARAN:</b><br>
+              Pelanggaran ke-1: Teguran keras.<br>
+              Pelanggaran ke-2: <b>Ujian dihentikan otomatis, nilai dikirim apa adanya.</b>
+            </div>
+          </div>
+        `,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "<i class='fa fa-check'></i> SAYA MENGERTI & MULAI",
+        cancelButtonText: "<i class='fa fa-times'></i> BATAL",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        width: "90%"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Jika siswa klik "SAYA MENGERTI & MULAI", lanjut memuat soal
+          mulaiUjian(res.data.nama,res.data.kelas,iv,res.data.foto,nv);
+        } else {
+          // Jika siswa klik "BATAL", kembalikan tombol ke awal
+          btn.disabled=false;
+          btn.innerHTML=tx;
+        }
+      });
+      // ===== AKHIR TAMBAHAN =====
+
+    }else{
+      btn.disabled=false;
+      btn.innerHTML=tx;
+      hideLoadingSoal();
+      Swal.fire("Gagal Masuk",res.message,"error");
+    }
+  }).withFailureHandler(function(err){
+    btn.disabled=false;
+    btn.innerHTML=tx;
+    hideLoadingSoal();
+    Swal.fire("Koneksi Gagal","Tidak dapat terhubung ke server: "+err,"error");
+  }).cekLoginSiswa(nv,pv,iv);
+}
+
+function mulaiUjian(nama,kelas,idPelajaran,foto,nisn){
+  var btn=document.getElementById("btn-start");
+  if(btn){btn.innerHTML='MASUK UJIAN <i class="fa fa-arrow-right"></i>';btn.disabled=false;}
+  idUjianTerpilih=idPelajaran;
+  showLoadingSoal();
+  google.script.run.withSuccessHandler(function(res){
+    if(res.error){hideLoadingSoal();Swal.fire("Gagal",res.error,"error");resetLoginBtn();return;}
+    if(res.soal&&res.soal.length>0){
+      dataSiswa={nama:nama,kelas:kelas,nisn:nisn,foto:foto};
+      var raw=res.soal;
+      for(var i=raw.length-1;i>0;i--){
+        var j=Math.floor(Math.random()*(i+1));
+        var tmp=raw[i];raw[i]=raw[j];raw[j]=tmp;
+      }
+      soalData=raw;currentSoal=0;isQuizActive=true;
+      var sel2=document.getElementById("pilih-ujian-select");
+      var opt=sel2?sel2.options[sel2.selectedIndex]:null;
+      var dm=(opt&&opt.dataset.durasi)?parseInt(opt.dataset.durasi):60;
+      hideLoadingSoal();
+      showPage("quiz-page");
+      setTimeout(function(){
+        var tn=document.getElementById("txt-nama");if(tn)tn.innerText=dataSiswa.nama;
+        var tk = document.getElementById("txt-nisn-display");
+        if(tk) tk.innerText = dataSiswa.nisn || "-";
+        var img=document.getElementById("foto-siswa-img");if(img)img.src=dataSiswa.foto||"https://www.w3schools.com/howto/img_avatar.png";
+        renderSoal();renderNav();startTimer(dm*60);
+      },300);
+    }else{hideLoadingSoal();Swal.fire("Kosong","Maaf, soal tidak ditemukan.","warning");resetLoginBtn();}
+  }).withFailureHandler(function(err){
+    hideLoadingSoal();Swal.fire("Error","Koneksi terputus: "+err,"error");resetLoginBtn();
+  }).getSoalById(idPelajaran);
+}
+
+function resetLoginBtn(){var b=document.getElementById("btn-start");if(b){b.innerHTML='MASUK UJIAN <i class="fa fa-arrow-right"></i>';b.disabled=false;}}
+
+function handleDebounceIsian(e) {
+  try {
+    if (isRenderingIsian) return;
+    var val = e.target.value || "";
+    jawabanUser[currentSoal] = val;
+    var countEl = document.getElementById("char-count");
+    if (countEl) {
+      var currentLength = val.length;
+      var maxLimit = e.target.maxLength || 100;
+      countEl.innerText = currentLength + " / " + maxLimit;
+      if (currentLength >= maxLimit) countEl.style.color = "#e74c3c";
+      else if (currentLength >= maxLimit * 0.8) countEl.style.color = "#f39c12";
+      else countEl.style.color = "var(--text-muted)";
+    }
+    clearTimeout(debounceTimerIsian);
+    debounceTimerIsian = setTimeout(function() {
+      pickIsian(val);
+    }, 800);
+  } catch(err) {
+    console.error("Error handleDebounceIsian:", err);
+  }
+}
+
+// ===== 4 FUNGSI HELPER UNTUK MENJODOHKAN =====
+function jodohIsGambar(url) {
+  if (!url) return false;
+  var c = url.toString().toLowerCase();
+  return (c.indexOf('drive.google.com') > -1) || (c.indexOf('lh3.googleusercontent.com') > -1) ||
+         (c.indexOf('.jpg') > -1) || (c.indexOf('.jpeg') > -1) || (c.indexOf('.png') > -1) ||
+         (c.indexOf('.gif') > -1) || (c.indexOf('.webp') > -1);
+}
+
+function jodohThumb(url) {
+  if (!url) return "";
+  var u = url.toString();
+  if (u.indexOf('drive.google.com') > -1) {
+    var m = u.match(/[-\w]{25,}/);
+    if (m) return "https://drive.google.com/thumbnail?sz=w500&id=" + m[0];
+  }
+  return u;
+}
+
+function togglePilihanJodoh(id) {
+  var box = document.getElementById('opt-box-' + id);
+  if (box) box.style.display = (box.style.display === 'none') ? 'block' : 'none';
+}
+
+function pickMenjodohkan(id, value) {
+  if (!jawabanUser[currentSoal]) jawabanUser[currentSoal] = {};
+  jawabanUser[currentSoal][id] = value;
+  markAnswered();
+  renderSoal();
+}
+
+// ===== FUNGSI UTAMA UNTUK RENDER SOAL =====
+function renderSoal(){
+  try {
+    var qc = document.getElementById("quiz-content");
+    if(!qc) return;
+    
+    var oldIframes = qc.getElementsByTagName("iframe");
+    for (var i = oldIframes.length - 1; i >= 0; i--) {
+        oldIframes[i].src = "about:blank"; 
+        oldIframes[i].parentNode.removeChild(oldIframes[i]);
+    }
+
+    if (window.MathJax && MathJax.typesetClear) {
+        MathJax.typesetClear([qc]);
+    }
+
+    var s = soalData[currentSoal];
+    if (!s) return;
+    
+    var tipe = (s.Tipe_Soal || "PG").toUpperCase();
+    var ts = s.Teks_Soal || "";
+    var media = s["Media_Soal_(Link)"] || s["Media_Soal (Link)"] || s.Media_Soal || "";
+    var audioLink = s["Audio_Soal_(Link)"] || s["Audio_Soal (Link)"] || s.Audio || "";
+    
+    document.getElementById("q-header").innerHTML = "SOAL NO. " + (currentSoal + 1) + " / " + soalData.length;
+    
+    var html = '';
+    html += '<div id="mj-zone" class="notranslate" translate="no" style="font-size:1.05rem;color:var(--text);line-height:1.8;margin-bottom:10px;">';
+    html += ts;
+    html += '</div>';
+
+    html += '<div id="media-zone" style="margin-bottom:15px;">';
+    
+    if (media) {
+      var fim = media.match(/[-\w]{25,}/);
+      
+      var isAudio = media.toLowerCase().indexOf(".mp3") > -1 || 
+                    media.toLowerCase().indexOf(".wav") > -1 || 
+                    media.toLowerCase().indexOf(".ogg") > -1 || 
+                    media.toLowerCase().indexOf(".m4a") > -1 ||
+                    media.toLowerCase().indexOf("audio=1") > -1;
+
+      if (media.indexOf("drive.google.com") > -1 && fim) {
+        var fid = fim[0];
+        var lv = "https://drive.google.com/file/d/" + fid + "/preview";
+        var dv = ["1XKmv1L7h0xHPOI1NFmXeUD4KRdO7n46o", "1t1-6_mOgd1LDn_JNwqE2L1D8kEQMqVR7"];
+        var isV = media.toLowerCase().indexOf("video") > -1 || media.toLowerCase().indexOf("mp4") > -1 || dv.indexOf(fid) > -1;
+        
+        if (isV) {
+          html += '<div style="width:100%;text-align:center;"><div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;background:#000;border:1px solid rgba(255,255,255,0.08);"><iframe data-src="' + lv + '" src="about:blank" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe></div></div>';
+        } 
+        else if (isAudio) {
+          html += '<div style="width:100%;text-align:center;"><div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;background:#1a1f4d;border:1px solid rgba(255,215,0,0.2);"><iframe src="' + lv + '" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe></div></div>';
+        } 
+        else {
+          var ld = "https://drive.google.com/thumbnail?authuser=0&sz=w1000&id=" + fid;
+          html += '<div style="width:100%;text-align:center;"><img src="' + ld + '" style="width:100%!important;height:auto!important;display:block;border-radius:8px;" onerror="this.style.display=\'none\';"><div style="display:none;position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;background:#000;"><iframe data-src="' + lv + '" src="about:blank" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;" allowfullscreen></iframe></div></div>';
+        }
+      } 
+      else if (media.indexOf("youtube.com") > -1 || media.indexOf("youtu.be") > -1) {
+        var vid = media.indexOf("v=") > -1 ? media.split("v=")[1].split("&")[0] : media.split("/").pop();
+        var ytUrl = "https://www.youtube.com/embed/" + vid + "?hl=id&cc_load_policy=0&iv_load_policy=3&rel=0&modestbranding=1";
+        html += '<div style="width:100%;"><div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;" class="notranslate" translate="no" lang="id"><iframe width="100%" height="100%" data-src="' + ytUrl + '" src="about:blank" style="position:absolute;top:0;left:0;" frameborder="0" allowfullscreen class="notranslate" translate="no" lang="id"></iframe></div></div>';
+      } 
+      else {
+        if (isAudio) {
+          html += '<audio controls style="width:100%; margin:10px 0;"><source src="' + media + '" type="audio/mpeg"></audio>';
+        } else {
+          var um = media.match(/#(\d+)/);
+          var cm = media.split("#")[0];
+          var lf = um ? um[1] + "px" : "100%";
+          html += '<div style="text-align:center;width:100%;"><img src="' + cm + '" style="width:' + lf + '!important;max-width:100%!important;height:auto!important;border-radius:8px;"></div>';
+        }
+      }
+    }
+    html += '</div>';
+
+    // AUDIO TERPISAH (HANYA 1 KALI, TANPA ICON)
+    if (audioLink && audioLink.toString().trim() !== "") {
+      var srcAudio = audioLink;
+      if (audioLink.indexOf("drive.google.com") > -1) {
+        var audioIdMatch = audioLink.match(/[-\w]{25,}/);
+        if (audioIdMatch) {
+          srcAudio = "https://drive.google.com/uc?export=download&id=" + audioIdMatch[0];
+        }
+      }
+      html += '<audio controls style="width:100%; margin:10px 0;"><source src="' + srcAudio + '" type="audio/mpeg"></audio>';
+    }
+
+    // INTERACT-ZONE (HANYA 1 KALI)
+    html += '<div id="interact-zone" class="notranslate" translate="no">';
+    
+    // ========== TIPE MCMA ==========
+    if(tipe.indexOf("MCMA")>-1){
+      var lm=tipe.match(/\(([^)]+)\)/);
+      var opsi=lm?lm[1].split("/"):["Benar","Salah"];
+      html+='<table style="width:100%;border-collapse:collapse;margin:15px 0;font-size:0.95rem;"><thead><tr style="background:rgba(255,215,0,0.1);"><th style="padding:12px;text-align:left;color:var(--text);">Pernyataan</th><th style="text-align:center;width:70px;color:var(--text);">'+opsi[0]+'</th><th style="text-align:center;width:70px;color:var(--text);">'+opsi[1]+'</th></tr></thead><tbody>';
+      ["A","B","C","D","E"].forEach(function(p){
+        if(s[p]){
+          var sv=(jawabanUser[currentSoal]||{})[p];
+          html+='<tr><td style="padding:12px;border:1px solid rgba(255,255,255,0.08);color:var(--text);">'+s[p]+'</td><td align="center" style="border:1px solid rgba(255,255,255,0.08);"><input type="radio" name="mcma-'+p+'" '+(sv===opsi[0]?"checked":"")+' onclick="pickMCMA(\''+p+"','"+opsi[0]+'\')"></td><td align="center" style="border:1px solid rgba(255,255,255,0.08);"><input type="radio" name="mcma-'+p+'" '+(sv===opsi[1]?"checked":"")+' onclick="pickMCMA(\''+p+"','"+opsi[1]+'\')"></td></tr>';
+        }
+      });
+      html+="</tbody></table>";
+    } 
+    // ========== TIPE ISIAN ==========
+    else if(tipe==="ISIAN"){
+      html+='<div style="margin-top:10px;"><label style="font-size:0.8rem;color:var(--text-sec);display:flex;justify-content:space-between;margin-bottom:8px;"><span>Jawaban Anda:</span><span id="char-count" style="font-weight:400;font-size:0.75rem;color:var(--text-muted);">0 / 100</span></label><input type="text" id="input-isian" maxlength="100" value="'+(jawabanUser[currentSoal]||"")+'" placeholder="Ketik jawaban di sini..." style="width:100%;padding:14px 16px;border:1.5px solid rgba(255,215,0,0.2);border-radius:12px;background:rgba(255,255,255,0.05);color:var(--text);font-family:\'Inter\',sans-serif;font-size:1rem;outline:none;"></div>';
+    } 
+     // ========== TIPE MENJODOHKAN ==========
+    else if (tipe === "MENJODOHKAN") {
+      var sisiKiri = [];
+      ["A","B","C","D","E"].forEach(function(k){
+        if (s[k] && s[k].toString().trim() !== "") sisiKiri.push({ id: k, content: s[k].toString() });
+      });
+      var sisiKanan = [];
+      ["A","B","C","D","E"].forEach(function(k, idx){
+        var v = s["g"+k];
+        if (v && v.toString().trim() !== "") sisiKanan.push({ val: String(idx+1), content: v.toString() });
+      });
+
+      if (!window.jodohShuffle) window.jodohShuffle = {};
+      if (!window.jodohShuffle[currentSoal]) {
+        window.jodohShuffle[currentSoal] = sisiKanan.slice().sort(function(){ return Math.random() - 0.5; });
+      }
+      var sisiKananAcak = window.jodohShuffle[currentSoal];
+
+      html += '<div class="menjodohkan-container">';
+      sisiKiri.forEach(function(item, index){
+        var selectedVal = (jawabanUser[currentSoal] && jawabanUser[currentSoal][item.id]) ? jawabanUser[currentSoal][item.id] : "";
+        var selectedContent = "";
+        for (var q=0; q<sisiKanan.length; q++) {
+          if (sisiKanan[q].val === selectedVal) { selectedContent = sisiKanan[q].content; break; }
+        }
+
+        html += '<div class="jodohkan-row">';
+        if (jodohIsGambar(item.content)) {
+          html += '<div class="jodohkan-kiri"><span class="jodohkan-nomor">'+(index+1)+'.</span><img src="'+jodohThumb(item.content)+'" class="jodohkan-kiri-img" onerror="this.style.display=\'none\'"></div>';
+        } else {
+          html += '<div class="jodohkan-kiri"><span class="jodohkan-nomor">'+(index+1)+'.</span> '+item.content+'</div>';
+        }
+
+        html += '<div class="jodohkan-kanan">';
+        if (selectedVal !== "") {
+          if (jodohIsGambar(selectedContent)) {
+            html += '<div class="jodohkan-preview-img" onclick="togglePilihanJodoh(\''+item.id+'\')"><img src="'+jodohThumb(selectedContent)+'"><span class="ganti-btn">Klik untuk Ganti</span></div>';
+          } else {
+            html += '<div class="jodohkan-preview-text" onclick="togglePilihanJodoh(\''+item.id+'\')">'+selectedContent+' <span class="ganti-btn">Klik untuk Ganti</span></div>';
+          }
+        } else {
+          html += '<button type="button" class="btn-pilih-jodoh" onclick="togglePilihanJodoh(\''+item.id+'\')"><i class="fa fa-hand-pointer"></i> Pilih Jawaban</button>';
+        }
+        html += '</div></div>';
+
+        html += '<div class="jodohkan-options-box" id="opt-box-'+item.id+'" style="display:none;"><div class="jodohkan-options-grid">';
+        sisiKananAcak.forEach(function(opt){
+          var isActive = (selectedVal === opt.val) ? 'active' : '';
+          if (jodohIsGambar(opt.content)) {
+            html += '<div class="jodohkan-opt-img '+isActive+'" onclick="pickMenjodohkan(\''+item.id+'\', \''+opt.val+'\')"><img src="'+jodohThumb(opt.content)+'" onerror="this.style.display=\'none\'"></div>';
+          } else {
+            html += '<div class="jodohkan-opt-text '+isActive+'" onclick="pickMenjodohkan(\''+item.id+'\', \''+opt.val+'\')">'+opt.content+'</div>';
+          }
+        });
+        html += '</div></div>';
+      });
+      html += '</div>';
+    }  
+    // ========== TIPE PG / PGK ==========
+    else {
+      ["A","B","C","D","E"].forEach(function(p){
+        if(s[p]||s["g"+p]){
+          var isPGK=tipe==="PGK";
+          var sl=isPGK?(jawabanUser[currentSoal]||[]).indexOf(p)>-1:jawabanUser[currentSoal]===p;
+          var lgo="";
+          var rl=s["g"+p]||"";
+          if(rl.indexOf("drive.google.com")>-1){
+            var idm=rl.match(/[-\w]{25,}/);
+            if(idm)lgo="https://drive.google.com/thumbnail?sz=w500&id="+idm[0];
+          }else{
+            lgo=rl;
+          }
+          html+='<div class="option '+(sl?"selected":"")+'" onclick="pick(\''+p+"','"+tipe+'\')"><div class="opt-circle">'+p+"</div><div style=\"flex:1;font-size:1rem;line-height:1.6;\">"+(s[p]||"")+(lgo?'<br><img src="'+lgo+'" style="max-width:220px;margin-top:12px;border-radius:8px;display:block;">':"")+"</div></div>";
+        }
+      });
+    }
+    html += '</div>';
+
+    qc.innerHTML = html;
+
+    var mediaZone = document.getElementById("media-zone");
+    if(mediaZone) {
+      var lazyIframes = mediaZone.querySelectorAll("iframe[data-src]");
+      for (var j = 0; j < lazyIframes.length; j++) {
+          lazyIframes[j].src = lazyIframes[j].dataset.src;
+      }
+    }
+
+    if (window.MathJax) {
+      if (MathJax.typesetPromise) {
+        MathJax.typesetPromise([qc]).catch(function(err) {
+          console.log("MathJax error:", err);
+        });
+      } else if (MathJax.Hub && MathJax.Hub.Queue) {
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, qc]);
+      }
+    }
+
+    if (tipe === "ISIAN") {
+      var inputEl = document.getElementById("input-isian");
+      if (inputEl) {
+        var countEl = document.getElementById("char-count");
+        if (countEl) {
+          var initLen = inputEl.value.length;
+          countEl.innerText = initLen + " / 100";
+        }
+        
+        var newInputEl = inputEl.cloneNode(true);
+        inputEl.parentNode.replaceChild(newInputEl, inputEl);
+        
+        newInputEl.addEventListener('input', function(e) {
+          if (typeof isRenderingIsian !== 'undefined' && isRenderingIsian) return;
+          if (typeof handleDebounceIsian === 'function') handleDebounceIsian(e);
+        });
+        
+        newInputEl.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            return false;
+          }
+        });
+        
+        newInputEl.addEventListener('paste', function(e) {
+          e.preventDefault();
+          var text = (e.clipboardData || window.clipboardData).getData('text');
+          text = text.replace(/[\$\$\$\\]/g, ''); 
+          var start = this.selectionStart;
+          var end = this.selectionEnd;
+          var val = this.value;
+          this.value = val.substring(0, start) + text + val.substring(end);
+          this.selectionStart = this.selectionEnd = start + text.length;
+          var inputEvent = new Event('input', { bubbles: true });
+          this.dispatchEvent(inputEvent);
+        });
+      }
+    }
+  } catch(e) {
+    console.error("Error in renderSoal:", e);
+  }
+}
+
+function pickIsian(v) {
+  try {
+    if (currentSoal < 0 || currentSoal >= soalData.length) return;
+    jawabanUser[currentSoal] = v;
+    var b = document.getElementById("nav-" + currentSoal);
+    if (b) {
+      if (v && v.trim() !== "") {
+        b.classList.add("answered");
+      } else {
+        b.classList.remove("answered");
+      }
+    }
+  } catch(err) {
+    console.error("Error pickIsian:", err);
+  }
+}
+
+function pick(p,t){
+  if(t==="PGK"){
+    if(!Array.isArray(jawabanUser[currentSoal]))jawabanUser[currentSoal]=[];
+    var i=jawabanUser[currentSoal].indexOf(p);
+    i>-1?jawabanUser[currentSoal].splice(i,1):jawabanUser[currentSoal].push(p);
+  }else{
+    jawabanUser[currentSoal]=p;
+  }
+  renderSoal();markAnswered();
+}
+
+function pickMCMA(p,v){
+  if(!jawabanUser[currentSoal])jawabanUser[currentSoal]={};
+  jawabanUser[currentSoal][p]=v;
+  markAnswered();
+}
+
+function nextQuestion(){
+  if(currentSoal < soalData.length - 1){
+    currentSoal++;
+    renderSoal();
+    updateNavActive();
+  } else {
+    finish();
+  }
+}
+
+function prevQuestion(){if(currentSoal>0){currentSoal--;renderSoal();updateNavActive();}}
+
+function markAnswered() {
+  try {
+    if (currentSoal < 0 || currentSoal >= soalData.length) return;
+    var b = document.getElementById("nav-" + currentSoal);
+    if (b) {
+      var j = jawabanUser[currentSoal];
+      var isAnswered = false;
+      if (j) {
+        if (typeof j === "string") {
+          isAnswered = j.trim() !== "";
+        } else if (Array.isArray(j)) {
+          isAnswered = j.length > 0;
+        } else if (typeof j === "object" && j !== null) {
+          var keys = Object.keys(j);
+          if (keys.length > 0) {
+            isAnswered = keys.some(function(k) {
+              return j[k] && j[k].toString().trim() !== "";
+            });
+          }
+        }
+      }
+      if (isAnswered) {
+        b.classList.add("answered");
+      } else {
+        b.classList.remove("answered");
+      }
+    }
+  } catch(err) {
+    console.error("Error markAnswered:", err);
+  }
+}
+
+function goTo(i){currentSoal=i;renderSoal();updateNavActive();}
+function updateNavActive(){var btns=document.querySelectorAll(".nav-btn");for(var i=0;i<btns.length;i++)btns[i].classList.remove("current");var a=document.getElementById("nav-"+currentSoal);if(a)a.classList.add("current");}
+function renderNav(){var nb=document.getElementById("nav-buttons");if(!nb||!soalData)return;var h="";for(var i=0;i<soalData.length;i++)h+='<button class="nav-btn" id="nav-'+i+'" onclick="goTo('+i+')">'+(i+1)+"</button>";nb.innerHTML=h;updateNavActive();for(var i=0;i<soalData.length;i++){var b=document.getElementById("nav-"+i);if(b&&jawabanUser[i])b.classList.add("answered");}}
+function startTimer(dur){
+  timeLeft=dur;
+  if(examInterval)clearInterval(examInterval);
+  
+  examInterval=setInterval(function(){
+    if(!isFinished && timeLeft>0){
+      timeLeft--;
+      var m=Math.floor(timeLeft/60);
+      var s=timeLeft%60;
+      var el=document.getElementById("timer");
+      if(el)el.innerText=m+":"+(s<10?"0"+s:s);
+      
+      // CEK JIKA WAKTU SUDAH HABIS
+      if(timeLeft<=0){
+        clearInterval(examInterval);
+        isFinished=true;
+        
+        // Munculkan tulisan waktu habis, lalu otomatis kirim tanpa klik OK
+        Swal.fire({
+          title: "⏰ WAKTU HABIS!",
+          text: "Waktu ujian telah berakhir. Jawaban sedang dikirim otomatis...",
+          icon: "info",
+          showConfirmButton: false, // Sembunyikan tombol OK/Batal
+          timer: 1500, // Otomatis tutup dalam 1.5 detik
+          allowOutsideClick: false
+        }).then(function(){
+          finish(true); // Langsung eksekusi pengiriman nilai
+        });
+      }
+    }
+  },1000);
+}
+
+function finish(forceFinish){
+  if(isFinishedAlready)return;
+  isFinishedAlready=true;
+  isQuizActive=false;
+  hideLoadingSoal();
+  
+  var terisi=Object.keys(jawabanUser||{}).length;
+  var belum=soalData.length-terisi;
+  var eksekusiKirim=function(){
+    var lo=document.getElementById("loading-overlay");
+    if(lo)lo.remove();
+    document.body.insertAdjacentHTML("beforeend",'<div id="loading-overlay" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(12,18,50,0.92);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;"><div style="width:50px;height:50px;border:3px solid rgba(255,215,0,0.15);border-top:3px solid #ffd700;border-radius:50%;animation:spin 0.8s linear infinite;margin-bottom:20px;"></div><h3 style="color:#f0f0f0;font-family:Inter,sans-serif;font-weight:600;"><i class="fa fa-paper-plane" style="margin-right:8px;color:#ffd700;"></i>Mengirim Jawaban...</h3></div>');
+    var dataJ=[];
+    soalData.forEach(function(s,i){
+      var dm=jawabanUser[i]||"-";
+      var ut="";
+      var tipe = (s.Tipe_Soal || "PG").toUpperCase();
+      
+      if(tipe.indexOf("MCMA") > -1 || tipe === "MENJODOHKAN"){
+        if(typeof dm === "object" && dm !== null){
+          var keys = Object.keys(dm).sort();
+          var answers = keys.map(function(k) { return dm[k]; }).filter(String);
+          ut = answers.join(",");
+        }
+      } else if(Array.isArray(dm)){
+        ut = dm.filter(String).join(",");
+      } else if(typeof dm === "object" && dm !== null){
+        ut = Object.keys(dm).sort().map(function(k){return dm[k]}).filter(String).join(",");
+      } else {
+        ut = (dm || "").toString().trim();
+      }
+      
+      if(ut === "" || ut === "null") ut = "-";
+      
+      var st = ut === "-" ? "KOSONG" : ut;
+      dataJ.push({no: parseInt(s.Nomor || s.No || (i+1)), jawab: st});
+    });
+    
+    dataJ.sort(function(a,b){return a.no-b.no});
+    
+    google.script.run.withSuccessHandler(function(){
+      var lo2=document.getElementById("loading-overlay");
+      if(lo2)lo2.remove();
+      createConfetti();
+      var hn=document.getElementById("hasil-nama");
+      if(hn)hn.innerText=dataSiswa.nama||"Siswa";
+      var hk=document.getElementById("hasil-kelas");
+      if(hk)hk.innerText=dataSiswa.kelas||"-";
+      var pages=document.querySelectorAll(".page");
+      for(var i=0;i<pages.length;i++)pages[i].style.setProperty('display','none','important');
+      var tp=document.getElementById("thanks-page");
+      if(tp){
+        tp.style.setProperty('display','block','important');
+        window.scrollTo(0,0);
+      }
+     }).withFailureHandler(function(err){
+      isFinishedAlready=false;
+      isQuizActive=true;
+      var lo3=document.getElementById("loading-overlay");
+      if(lo3)lo3.remove();
+      Swal.fire("GAGAL MENGIRIM!","Pastikan internet stabil. Error: "+err,"error");
+    }).simpanNilaiSiswa(
+      String(idUjianTerpilih), 
+      String(dataSiswa.nisn||"0"), 
+      String(dataSiswa.nama), 
+      String(dataSiswa.kelas), 
+      dataJ
+    );
+  };  
+  if(timeLeft<=0||forceFinish){
+    eksekusiKirim();
+  }else{
+    Swal.fire({
+      title:"KONFIRMASI JAWABAN",
+      html:'<div style="text-align:left;padding:15px;font-family:Inter,sans-serif;"><p><b>Jawaban Terisi:</b> <span style="color:#2ecc71;">'+terisi+' Soal</span></p><p><b>Belum Terisi:</b> <span style="color:#e74c3c;">'+belum+' Soal</span></p><hr style="border-color:rgba(255,255,255,0.1);"><p style="text-align:center;font-weight:bold;margin-top:15px;">Apakah Anda yakin ingin mengakhiri ujian?</p></div>',
+      icon:"question",
+      showCancelButton:true,
+      confirmButtonColor:"#ffd700",
+      cancelButtonColor:"#e74c3c",
+      confirmButtonText:"YA, KIRIM!",
+      cancelButtonText:"BELUM",
+      allowOutsideClick:false
+    }).then(function(r){
+      if(r.isConfirmed){
+        eksekusiKirim();
+      }else{
+        isFinishedAlready=false;
+        isQuizActive=true;
+      }
+    });
+  }
+}
+
+function createConfetti(){
+  var colors=['#FFD700','#FF1493','#00d4ff','#2ecc71','#ff6b6b'];
+  var card=document.querySelector('.thanks-card');
+  for(var i=0;i<50;i++){
+    setTimeout(function(){
+      var confetti=document.createElement('div');
+      confetti.className='confetti';
+      confetti.style.left=Math.random()*100+'%';
+      confetti.style.background=colors[Math.floor(Math.random()*colors.length)];
+      confetti.style.animationDuration=(Math.random()*2+2)+'s';
+      card.appendChild(confetti);
+      setTimeout(function(){confetti.remove()},4000);
+    },i*50);
+  }
+}
+
+(function(){
+ try{
+ var quotes = ["Kerja keras tidak pernah mengkhianati hasil.","Pendidikan adalah senjata paling ampuh untuk mengubah dunia.","Jangan takut gagal, takutlah untuk tidak mencoba.","Masa depanmu ditentukan oleh apa yang kamu lakukan hari ini, bukan besok.","Setiap usaha yang kamu lakukan hari ini adalah investasi untuk masa depanmu.","Kesuksesan adalah jumlah dari usaha kecil yang diulang hari demi hari.","Teruslah belajar, karena hidup tidak pernah berhenti mengajar.","Kamu lebih kuat dari yang kamu kira.","Bermimpilah besar, berusahalah keras, dan jangan pernah menyerah.","Nilai tidak mendefinisikanmu, tapi usahamu menentukan siapa dirimu."];
+ var el = document.getElementById("motivation-text");
+ if(el){ el.textContent = quotes[Math.floor(Math.random() * quotes.length)]; }
+ }catch(e){}
+})();
+
+(function() {
+    try {
+        var _0x7a2b = [
+            '\x31\x67\x6a\x37\x33\x41\x6d\x31\x48\x30\x4b\x6e\x71\x34\x72\x45\x45\x76\x43\x73\x43\x35\x53\x4e\x32\x43\x4b\x45\x4c\x42\x58\x78\x65', 
+            '\x2e\x68\x65\x61\x64\x65\x72\x2d\x6c\x6f\x67\x6f\x2c\x20\x2e\x6c\x6f\x67\x6f\x2d\x64\x61\x6c\x61\x6d\x2c\x20\x2e\x74\x68\x61\x6e\x6b\x73\x2d\x6c\x6f\x67\x6f\x2d\x69\x6d\x67\x2c\x20\x2e\x6c\x6f\x67\x6f\x2d\x73\x70\x6c\x61\x73\x68\x2c\x20\x23\x73\x63\x68\x6f\x6f\x6c\x4c\x6f\x67\x6f' 
+        ];
+
+        var web = _0x7a2b[0x0];
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                var elemen = document.querySelectorAll(_0x7a2b[0x1]);
+                if (elemen && elemen.length > 0) {
+                    elemen.forEach(function(img) {
+                        if (img && img.src && img.src.indexOf(web) === -1) {
+                            console.warn("Peringatan.");
+                        }
+                    });
+                }
+            }, 2000);
+        });
+    } catch(e) {}
+})();
+// ========================================
+
+// ===== PROTEKSI GAMBAR SOAL & PILIHAN (ANTI KLIK KANAN, LONG PRESS, GEMINI, LINK POPUP) =====
+(function() {
+  var style = document.createElement('style');
+  style.innerHTML = `
+    #quiz-content img {
+      -webkit-touch-callout: none !important;
+      -webkit-user-select: none !important;
+      -khtml-user-select: none !important;
+      -moz-user-select: none !important;
+      -ms-user-select: none !important;
+      user-select: none !important;
+      pointer-events: none !important;
+      touch-action: none !important;
+    }
+    
+    /* BLOKIR POP UP LINK GOOGLE DRIVE PADA KOTAK YANG BERISI GAMBAR */
+    .jodohkan-opt-img, .jodohkan-preview-img, .jodohkan-kiri, .option, #media-zone > div {
+      -webkit-touch-callout: none !important;
+      /* manipulation = Matikan long press (pop up link), tapi pertahankan klik singkat (tap) */
+      touch-action: manipulation !important; 
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Sembunyikan gambar dari pemindai asisten/AI bawaan browser (Accessibility Tree)
+  var observer = new MutationObserver(function(mutations) {
+    var imgs = document.querySelectorAll('#quiz-content img');
+    imgs.forEach(function(img) {
+      if (!img.dataset.secured) {
+        img.setAttribute('aria-hidden', 'true'); // Biar browser tidak anggap ini gambar
+        img.setAttribute('alt', ''); // Hapus teks alternatif
+        img.dataset.secured = 'true';
+      }
+    });
+  });
+  
+  var qc = document.getElementById('quiz-content');
+  if (qc) observer.observe(qc, { childList: true, subtree: true });
+
+  // Blokir klik kanan
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.closest('#quiz-page')) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }
+  }, true);
+
+  // Blokir drag gambar
+  document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG' && e.target.closest('#quiz-content')) {
+      e.preventDefault();
+      return false;
+    }
+  }, true);
+})();
+
+// ===== FITUR FULLSCREEN PAKSA & ANTI OVERLAY GEMINI / NAVIGASI =====
+(function() {
+  var style = document.createElement('style');
+  style.innerHTML = `
+    html, body {
+      height: 100vh; 
+      height: 100dvh; 
+      overflow: auto;
+    }
+    
+    #btn-fullscreen-exam {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 99999;
+      background: linear-gradient(135deg, #ffd700, #ff8c00);
+      color: #000 !important;
+      border: none;
+      padding: 14px 20px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 15px;
+      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+      cursor: pointer;
+      display: none; 
+      align-items: center;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      animation: pulse-fullscreen 2s infinite;
+      transition: all 0.3s ease;
+    }
+    #btn-fullscreen-exam i { font-size: 18px; }
+    
+    @keyframes pulse-fullscreen {
+      0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.5); }
+      70% { box-shadow: 0 0 0 15px rgba(255, 215, 0, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+    }
+
+    /* ===== FIX NAVIGASI SOAL (1-19) AGAR TIDAK MEMBESAR SAAT FULLSCREEN ===== */
+    .nav-btn {
+      width: 38px !important;
+      height: 38px !important;
+      max-width: 38px !important;
+      max-height: 38px !important;
+      aspect-ratio: auto !important;
+      padding: 0 !important;
+      margin: 2px !important;
+      font-size: 0.8rem !important;
+      line-height: 38px !important;
+      text-align: center !important;
+      box-sizing: border-box !important;
+      display: inline-block !important;
+    }
+    .nav-grid {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 4px !important;
+    }
+
+    /* ===== RESPONSIVE UNTUK TOMBOL FULLSCREEN DI HP ===== */
+    @media (max-width: 768px) {
+      #btn-fullscreen-exam {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        padding: 0 !important;
+        border-radius: 50%;
+        justify-content: center;
+        font-size: 0;
+      }
+      #btn-fullscreen-exam .text-btn-fs {
+        display: none;
+      }
+
+      /* ===== FIX GAMBAR SOAL DI HP AGAR TIDAK KECIL & TERBACA ===== */
+      /* Paksa gambar di area soal utama memenuhi layar HP */
+      #quiz-content img, #media-zone img, #mj-zone img {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 100% !important;
+        height: auto !important;
+        display: block !important;
+        margin: 10px auto !important;
+      }
+      /* Khusus gambar di dalam tabel (soal menjodohkan/tabel), biarkan menyesuaikan tapi tidak pecah */
+      #quiz-content table img {
+        min-width: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      /* Khusus gambar di pilihan ganda, biarkan agak besar tapi tidak melebihi layar */
+      .option img {
+        width: 100% !important;
+        max-width: 250px !important;
+        min-width: 150px !important;
+        margin: 10px auto !important;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+
+  var btn = document.createElement('button');
+  btn.id = 'btn-fullscreen-exam';
+  btn.innerHTML = '<i class="fas fa-expand"></i> <span class="text-btn-fs">Layar Penuh</span>';
+  document.body.appendChild(btn);
+
+  // ============ PENDETEKSI INTERAKSI VIDEO ============
+  var isInteractingWithVideo = false;
+  var videoInteractionTimer = null;
+
+  document.addEventListener('mousedown', function(e) {
+    var el = e.target;
+    while (el && el !== document.body && el !== document.documentElement) {
+      if (el.tagName === 'IFRAME' || el.tagName === 'VIDEO') {
+        isInteractingWithVideo = true;
+        if (videoInteractionTimer) clearTimeout(videoInteractionTimer);
+        videoInteractionTimer = setTimeout(function() {
+          isInteractingWithVideo = false;
+        }, 3000);
+        break;
+      }
+      el = el.parentNode;
+    }
+  }, true);
+
+  window.addEventListener('focus', function() {
+    setTimeout(function() {
+      if (document.hasFocus() && (!document.activeElement || document.activeElement.tagName !== 'IFRAME')) {
+        isInteractingWithVideo = false;
+      }
+    }, 200);
+  });
+
+  function triggerFullscreen() {
+    var el = document.documentElement;
+    var rfs = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen || el.mozRequestFullScreen;
+    if (rfs) {
+      rfs.call(el).catch(function(err){ console.log("Gagal fullscreen:", err); });
+    } else {
+      window.scrollTo(0, 1);
+    }
+  }
+
+  btn.addEventListener('click', triggerFullscreen);
+
+    // 1. DETEKSI KELUAR DARI FULLSCREEN (TERTANGKAP SAAT TOMBOL NAVIGASI VIVO DITEKAN)
+  document.addEventListener('fullscreenchange', function() {
+    var isFs = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+    
+    // Jika yang fullscreen adalah video/iframe di dalam soal, biarkan (bukan pelanggaran)
+    if (isFs && (isFs.tagName === 'VIDEO' || isFs.tagName === 'IFRAME')) {
+      btn.style.display = 'none';
+      return;
+    }
+    
+    if (isFs) {
+      // Sedang dalam mode fullscreen
+      btn.style.display = 'none';
+    } else {
+      // Keluar dari mode fullscreen (Tombol navigasi tengah Vivo ditekan!)
+      btn.style.display = 'flex';
+      
+      // Jika ujian sedang aktif, keluar dari fullscreen = PELANGGARAN
+      if (typeof isQuizActive !== 'undefined' && isQuizActive && !isFinishedAlready && !isHandlingTabSwitch) {
+        isHandlingTabSwitch = true;
+        tabSwitchCount++;
+        
+        if (tabSwitchCount === 1) {
+          if(typeof playWarningSound === 'function') playWarningSound();
+          Swal.fire({
+            title: "⚠️ PERINGATAN BERAT!",
+            html: "<b>Jangan keluar dari Layar Penuh atau tekan tombol navigasi tengah!</b><br><br>Pelanggaran ke-1 tercatat.<br>Jika terulang lagi, <span style='color:#e74c3c;font-weight:800;'>UJIAN DIHENTIKAN OTOMATIS DAN NILAI TERKIRIM</span>.",
+            icon: "warning",
+            confirmButtonText: "MENGERTI, LANJUTKAN UJIAN",
+            allowOutsideClick: false
+          }).then(function() {
+            setTimeout(function() { isHandlingTabSwitch = false; }, 500);
+            triggerFullscreen(); // Paksa masuk fullscreen lagi
+          });
+        } else if (tabSwitchCount >= 2) {
+          if(typeof playWarningSound === 'function') playWarningSound();
+          isFinished = true;
+          if(typeof examInterval !== 'undefined' && examInterval) clearInterval(examInterval);
+          isHandlingTabSwitch = false;
+          if(typeof finish === 'function') finish(true);
+          setTimeout(function() {
+            Swal.fire({
+              title: "🚫 UJIAN DIHENTIKAN!",
+              html: "<b>Anda melanggar aturan untuk kedua kalinya!</b><br>Nilai sedang dikirim otomatis ke server.",
+              icon: "error",
+              confirmButtonText: "OK",
+              allowOutsideClick: false
+            });
+          }, 500);
+        } else {
+          isHandlingTabSwitch = false;
+        }
+      } else if (typeof isQuizActive !== 'undefined' && isQuizActive && !isFinishedAlready && !isInteractingWithVideo) {
+        // Jika bukan pelanggaran (misal keluar tidak sengaja), paksa kembali ke fullscreen
+        setTimeout(function() {
+          if (!isInteractingWithVideo) triggerFullscreen();
+        }, 300);
+      }
+    }
+  });
+
+  // 2. DETEKSI OVERLAY GEMINI / ASSISTANT (dengan filter iframe video)
+  window.addEventListener('blur', function() {
+    setTimeout(function() {
+      
+      if (document.activeElement && document.activeElement.tagName === 'IFRAME') {
+        return;
+      }
+      if (isInteractingWithVideo) {
+        return;
+      }
+      var fsEl = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+      if (fsEl && (fsEl.tagName === 'VIDEO' || fsEl.tagName === 'IFRAME')) {
+        return;
+      }
+      if (document.hasFocus()) {
+        return;
+      }
+      
+      if (typeof isQuizActive !== 'undefined' && isQuizActive && !isFinishedAlready && !isHandlingTabSwitch) {
+        isHandlingTabSwitch = true;
+        tabSwitchCount++;
+        
+        if (tabSwitchCount === 1) {
+          if(typeof playWarningSound === 'function') playWarningSound();
+          Swal.fire({
+            title: "⚠️ PERINGATAN BERAT!",
+            html: "<b>Jangan keluar dari halaman ujian dan Jangan tekan lama tombol navigasi atau buka AI!</b><br><br>Pelanggaran ke-1 tercatat.<br>Jika terulang lagi, <span style='color:#e74c3c;font-weight:800;'>UJIAN DIHENTIKAN OTOMATIS DAN NILAI TERKIRIM</span>.",
+            icon: "warning",
+            confirmButtonText: "MENGERTI, LANJUTKAN UJIAN",
+            allowOutsideClick: false
+          }).then(function() {
+            setTimeout(function() { isHandlingTabSwitch = false; }, 500);
+            triggerFullscreen(); 
+          });
+        } else if (tabSwitchCount >= 2) {
+          if(typeof playWarningSound === 'function') playWarningSound();
+          isFinished = true;
+          if(typeof examInterval !== 'undefined' && examInterval) clearInterval(examInterval);
+          isHandlingTabSwitch = false;
+          if(typeof finish === 'function') finish(true);
+          setTimeout(function() {
+            Swal.fire({
+              title: "🚫 UJIAN DIHENTIKAN!",
+              html: "<b>Anda melanggar aturan untuk kedua kalinya!</b><br>Nilai sedang dikirim otomatis ke server.",
+              icon: "error",
+              confirmButtonText: "OK",
+              allowOutsideClick: false
+            });
+          }, 500);
+        } else {
+          isHandlingTabSwitch = false;
+        }
+      }
+    }, 200);
+  });
+
+  // 3. TAMBAHAN: DETEKSI LAYAR SPLIT (KHUSUS HP VIVO & LAINNYA)
+  var originalHeight = window.innerHeight;
+  window.addEventListener('resize', function() {
+    if (typeof isQuizActive !== 'undefined' && isQuizActive && !isFinishedAlready && !isHandlingTabSwitch) {
+      var newHeight = window.innerHeight;
+      // Jika tinggi layar turun drastis (di bawah 65% tinggi awal), kemungkinan besar pakai Split Screen
+      if (newHeight < (originalHeight * 0.65)) {
+        isHandlingTabSwitch = true;
+        tabSwitchCount++;
+        
+        if (tabSwitchCount === 1) {
+          if(typeof playWarningSound === 'function') playWarningSound();
+          Swal.fire({
+            title: "⚠️ PERINGATAN BERAT!",
+            html: "<b>Jangan gunakan Layar Split / Sidebar Vivo!</b><br><br>Pelanggaran ke-1 tercatat.<br>Jika terulang lagi, <span style='color:#e74c3c;font-weight:800;'>UJIAN DIHENTIKAN OTOMATIS DAN NILAI TERKIRIM</span>.",
+            icon: "warning",
+            confirmButtonText: "MENGERTI, LANJUTKAN UJIAN",
+            allowOutsideClick: false
+          }).then(function() {
+            setTimeout(function() { isHandlingTabSwitch = false; }, 500);
+            triggerFullscreen(); 
+          });
+        } else if (tabSwitchCount >= 2) {
+          if(typeof playWarningSound === 'function') playWarningSound();
+          isFinished = true;
+          if(typeof examInterval !== 'undefined' && examInterval) clearInterval(examInterval);
+          isHandlingTabSwitch = false;
+          if(typeof finish === 'function') finish(true);
+          setTimeout(function() {
+            Swal.fire({
+              title: "🚫 UJIAN DIHENTIKAN!",
+              html: "<b>Anda melanggar aturan untuk kedua kalinya!</b><br>Nilai sedang dikirim otomatis ke server.",
+              icon: "error",
+              confirmButtonText: "OK",
+              allowOutsideClick: false
+            });
+          }, 500);
+        } else {
+          isHandlingTabSwitch = false;
+        }
+      }
+    }
+  });
+  // =============================================================
+
+  // Inisialisasi awal
+  setTimeout(function() {
+    var isFs = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+    if (!isFs) btn.style.display = 'flex';
+  }, 1000);
+})();
+
+// ===== CSS KHUSUS MENJODOHKAN (FIX TEKS GANTI) =====
+(function() {
+  var style = document.createElement('style');
+  style.innerHTML = `
+    /* Layout Utama: Soal Kiri, Jawaban Kanan */
+    .jodohkan-row { 
+      display: flex !important;
+      flex-direction: row !important; 
+      align-items: center !important; 
+      justify-content: space-between !important;
+      flex-wrap: nowrap !important;
+      gap: 15px !important;
+      padding: 20px !important;
+      margin-bottom: 15px !important;
+      background: linear-gradient(145deg, rgba(12,22,60,0.8), rgba(12,22,60,0.6)) !important;
+      border: 1.5px solid rgba(255,215,0,0.3) !important;
+      border-radius: 16px !important;
+    }
+    .jodohkan-kiri { 
+      flex: 1 1 60% !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      flex-wrap: nowrap !important;
+      font-size: 1rem !important;
+      font-weight: 700 !important;
+    }
+    .jodohkan-kiri-img { 
+      max-width: 150px !important; 
+      max-height: 120px !important;
+      width: auto !important;
+      flex-shrink: 0 !important;
+      border: 2px solid rgba(0,255,255,0.4) !important;
+      border-radius: 8px !important;
+    }
+    .jodohkan-kanan { 
+      flex: 1 1 35% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      border: 2px dashed rgba(255,215,0,0.4) !important;
+      border-radius: 12px !important;
+      padding: 15px !important;
+      min-height: 100px !important; 
+      background: rgba(0,0,0,0.2) !important;
+    }
+    .jodohkan-preview-img { 
+      max-width: 120px !important; 
+      width: auto !important;
+      border: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+    .jodohkan-preview-img img { 
+      height: 100px !important; 
+      object-fit: contain !important; 
+      background: transparent !important;
+      border-radius: 8px !important;
+    }
+    /* FIX TEKS JAWABAN: VENUS DAN KLIK GANTI DIPISAH VERTIKAL */
+    .jodohkan-preview-text { 
+      display: flex !important;
+      flex-direction: column !important; /* PISAH ATAS BAWAH */
+      align-items: center !important;
+      gap: 8px !important;
+      text-align: center !important;
+      background: rgba(46,204,113,0.2) !important;
+      border: 1px solid var(--success) !important;
+      color: var(--success) !important;
+      padding: 10px !important;
+      width: 100% !important;
+      border-radius: 8px !important;
+    }
+    .ganti-btn {
+      display: block !important;
+      margin-top: 5px !important;
+      font-size: 0.7rem !important;
+      color: var(--text-muted) !important;
+      text-decoration: underline !important;
+    }
+    .btn-pilih-jodoh { 
+      background: rgba(255,215,0,0.1) !important;
+      border: 1.5px solid rgba(255,215,0,0.4) !important;
+      color: var(--accent) !important;
+      padding: 10px !important;
+      border-radius: 8px !important;
+      font-weight: 700 !important;
+      width: 100% !important;
+    }
+    .jodohkan-options-box { 
+      width: 100% !important;
+      margin: 0 0 25px 0 !important;
+      padding: 20px !important;
+      background: rgba(0,0,0,0.3) !important;
+      border: 1px dashed rgba(0,255,255,0.3) !important;
+      border-radius: 12px !important;
+    }
+    .jodohkan-options-grid { 
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)) !important; 
+      gap: 15px !important;
+    }
+    .jodohkan-opt-img, .jodohkan-opt-text { 
+      background: rgba(255,255,255,0.05) !important;
+      border: 2px solid rgba(255,255,255,0.1) !important;
+      border-radius: 12px !important;
+      padding: 8px !important;
+      min-height: 70px !important;
+      transition: all 0.3s ease !important;
+    }
+    .jodohkan-opt-img:hover, .jodohkan-opt-text:hover { 
+      border-color: var(--accent) !important;
+      background: rgba(255,215,0,0.1) !important;
+      transform: scale(1.05) !important;
+    }
+  `;
+  document.head.appendChild(style);
+})();
+// ===== CSS KHUSUS HP: PERKECIL KOTAK MENJODOHKAN =====
+(function() {
+  var style = document.createElement('style');
+  style.innerHTML = `
+    @media (max-width: 768px) {
+      /* Kecilkan padding kotak utama */
+      .jodohkan-row { 
+        padding: 10px !important; 
+        gap: 10px !important;
+        border-radius: 12px !important;
+        margin-bottom: 10px !important;
+      }
+      /* Kecilkan ruang soal di kiri */
+      .jodohkan-kiri { 
+        flex: 1 1 55% !important; 
+        font-size: 0.9rem !important;
+      }
+      /* Perkecil gambar soal */
+      .jodohkan-kiri-img { 
+        max-width: 100px !important; 
+        max-height: 80px !important;
+        border-radius: 6px !important;
+      }
+      /* Sesuaikan ruang jawaban di kanan */
+      .jodohkan-kanan { 
+        flex: 1 1 40% !important; 
+        padding: 8px !important;
+        min-height: 80px !important;
+        border-radius: 8px !important;
+      }
+      /* Perkecil gambar jawaban */
+      .jodohkan-preview-img img { 
+        height: 70px !important; 
+      }
+      /* Kecilkan tombol dan teks */
+      .btn-pilih-jodoh { 
+        padding: 8px 5px !important;
+        font-size: 0.75rem !important;
+      }
+      .jodohkan-preview-text { 
+        padding: 6px !important;
+        font-size: 0.85rem !important;
+      }
+      .ganti-btn {
+        font-size: 0.65rem !important;
+      }
+      /* Kecilkan kotak pilihan di bawah */
+      .jodohkan-options-box {
+        padding: 10px !important;
+        margin-bottom: 15px !important;
+      }
+      .jodohkan-opt-img, .jodohkan-opt-text {
+        padding: 5px !important;
+        min-height: 60px !important;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+})();
+// ===== CSS AGAR TEKS SOAL OTOMATIS NAH BARIS BARU =====
+(function() {
+  var style = document.createElement('style');
+  style.innerHTML = `
+    #mj-zone {
+      white-space: pre-line !important;
+    }
+  `;
+  document.head.appendChild(style);
+})();
+// ===== DETEKSI WACANA DENGAN TANDA | =====
+(function() {
+  var style = document.createElement('style');
+  style.innerHTML = `
+    .wacana-box {
+      display: block !important;
+      background: rgba(255, 255, 255, 0.05) !important;
+      border-left: 4px solid var(--accent) !important;
+      padding: 15px 20px !important;
+      margin: 15px 0 !important;
+      border-radius: 0 8px 8px 0 !important;
+      font-style: italic !important;
+      color: rgba(240, 240, 240, 0.9) !important;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+      white-space: pre-line !important;
+    }
+  `;
+  document.head.appendChild(style);
+
+  var observer = new MutationObserver(function(mutations) {
+    var mj = document.getElementById('mj-zone');
+    if (mj && !mj.dataset.parsed) {
+      var text = mj.innerHTML;
+      // Cek apakah ada tanda | di awal dan akhir wacana
+      if (text.indexOf('|') !== -1) {
+        var newText = text.replace(/\|([\s\S]*?)\|/g, function(match, p1) {
+          // Hapus enter di awal dan akhir teks dalam kotak
+          var content = p1.replace(/^\n+/, '').replace(/\n+$/, '');
+          return '<div class="wacana-box">' + content + '</div>';
+        });
+        if (newText !== text) {
+          mj.innerHTML = newText;
+          mj.dataset.parsed = 'true'; // Tandai sudah diproses
+        }
+      }
+    }
+  });
+
+  var qc = document.getElementById('quiz-content');
+  if (qc) {
+    observer.observe(qc, { childList: true, subtree: true });
+  }
+})();
+</script>
+</body>
+</html>
